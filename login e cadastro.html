@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Suspiro | Entrar</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background-circle circle1"></div>
+<div class="background-circle circle2"></div>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">
+
+            Suspiro
+
+        </div>
+
+        <div class="header">
+
+            <h1>
+
+                Bem-vindo!
+
+            </h1>
+
+            <p>
+
+                Entre na sua conta ou crie uma para fazer parte do Suspiro.
+
+            </p>
+
+        </div>
+
+        <div class="tabs">
+
+            <button class="tab-btn active" onclick="switchTab('login')">
+
+                Login
+
+            </button>
+
+            <button class="tab-btn" onclick="switchTab('register')">
+
+                Cadastro
+
+            </button>
+
+        </div>
+
+        <div class="forms">
+
+            <!-- LOGIN -->
+
+            <form id="loginForm" class="form active">
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Digite seu email"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Senha</label>
+
+                    <input
+                        type="password"
+                        id="loginSenha"
+                        placeholder="Digite sua senha"
+                        required>
+
+                </div>
+
+                <button class="btn" type="submit">
+
+                    Entrar
+
+                </button>
+
+                <p class="footer-text">
+
+                    Bem-vindo de volta 💜
+
+                </p>
+
+            </form>
+
+
+
+
+
+            <!-- CADASTRO -->
+
+            <form id="registerForm" class="form">
+
+                <div class="form-group">
+
+                    <label>Nome de usuário</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="@usuario"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu email"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Crie uma senha"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Foto de Perfil</label>
+
+                    <input
+                        type="file"
+                        id="foto"
+                        accept="image/*">
+
+                </div>
+
+                <div class="preview">
+
+                    <img id="previewImg" src="" alt="">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Bio</label>
+
+                    <textarea
+                        id="bio"
+                        rows="4"
+                        placeholder="Conte um pouco sobre você..."></textarea>
+
+                </div>
+
+                <button class="btn" type="submit">
+
+                    Criar Conta
+
+                </button>
+
+                <p id="mensagemCadastro"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+
+</html>
