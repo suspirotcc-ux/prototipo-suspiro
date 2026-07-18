@@ -1,0 +1,209 @@
+/* ===========================
+RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#120c17;
+    --bg2:#1b1324;
+    --card:rgba(32,22,43,.88);
+
+    --roxo:#A370F7;
+    --roxo2:#BB8EFF;
+
+    --texto:#F6F1FF;
+    --texto2:#B8ABD0;
+
+    --input:#2b2038;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(135deg,#120c17,#1b1324,#26193a);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    color:var(--texto);
+
+}
+
+/* ===========================
+BOLHAS
+=========================== */
+
+.background-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.22;
+
+}
+
+.circle1{
+
+    width:320px;
+    height:320px;
+
+    background:#8b5cf6;
+
+    top:-80px;
+    left:-60px;
+
+}
+
+.circle2{
+
+    width:280px;
+    height:280px;
+
+    background:#b989ff;
+
+    right:-60px;
+    bottom:-60px;
+
+}
+
+/* ===========================
+CARD
+=========================== */
+
+.container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+.card{
+
+    width:460px;
+
+    background:var(--card);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:40px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:var(--roxo);
+
+    margin-bottom:20px;
+
+}
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.header h1{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.header p{
+
+    color:var(--texto2);
+
+    line-height:1.6;
+
+}
+
+/* ===========================
+ABAS
+=========================== */
+
+.tabs{
+
+    display:flex;
+
+    background:#23182f;
+
+    border-radius:50px;
+
+    padding:5px;
+
+    margin-bottom:35px;
+
+}
+
+.tab-btn{
+
+    flex:1;
+
+    border:none;
+
+    background:none;
+
+    color:var(--texto2);
+
+    padding:14px;
+
+    cursor:pointer;
+
+    border-radius:50px;
+
+    transition:.35s;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.tab-btn.active{
+
+    background:var(--roxo);
+
+    color:white;
+
+}
