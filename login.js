@@ -51,18 +51,19 @@ loginForm.addEventListener("submit",function(e){
 
     e.preventDefault();
 
-    const email=document.getElementById("loginEmail").value;
-    const senha=document.getElementById("loginSenha").value;
+    const emailSalvo = localStorage.getItem("email");
 
-    if(email==="" || senha===""){
+if(email !== emailSalvo){
 
-        alert("Preencha todos os campos.");
+    alert("E-mail não encontrado.");
 
-        return;
+    return;
 
-    }
+}
 
-   setTimeout(()=>{
+ localStorage.setItem("email", email);
+
+setTimeout(()=>{
 
     window.location.href="perfil.html";
 
@@ -123,3 +124,5 @@ setTimeout(()=>{
     window.location.href="perfil.html";
 
 },1000);
+
+});
