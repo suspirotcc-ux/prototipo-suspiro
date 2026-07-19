@@ -24,9 +24,7 @@ function switchTab(tab){
         loginForm.classList.add("active");
         registerForm.classList.remove("active");
 
-    }
-
-    else{
+    }else{
 
         registerTab.classList.add("active");
         loginTab.classList.remove("active");
@@ -39,36 +37,34 @@ function switchTab(tab){
 }
 
 // ===============================
-// FOTO DE PERFIL
-// ===============================
-
-
-// ===============================
 // LOGIN
 // ===============================
 
-loginForm.addEventListener("submit",function(e){
+loginForm.addEventListener("submit", function(e){
 
     e.preventDefault();
 
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginSenha").value.trim();
+
+    if(email === "" || senha === ""){
+
+        alert("Preencha todos os campos.");
+        return;
+
+    }
+
     const emailSalvo = localStorage.getItem("email");
 
-if(email !== emailSalvo){
+    if(emailSalvo && email !== emailSalvo){
 
-    alert("E-mail não encontrado.");
+        alert("E-mail não encontrado.");
+        return;
 
-    return;
+    }
 
-}
+    window.location.href = "perfil.html";
 
- localStorage.setItem("email", email);
-
-setTimeout(()=>{
-
-    window.location.href="perfil.html";
-
-},500);
-    
 });
 
 // ===============================
@@ -99,7 +95,8 @@ registerForm.addEventListener("submit", function(e){
 
     }
 
-    // Salva os dados do usuário
+    // Salva os dados
+
     localStorage.setItem("nome", usuario);
     localStorage.setItem("usuario", "@" + usuario);
     localStorage.setItem("email", email);
@@ -107,11 +104,52 @@ registerForm.addEventListener("submit", function(e){
     mensagem.style.color = "#7dff9d";
     mensagem.innerHTML = "Conta criada com sucesso! 💜";
 
-    setTimeout(() => {
+    setTimeout(function(){
 
         window.location.href = "perfil.html";
 
-    }, 1000);
+    },1000);
 
 });
+
+// ===============================
+// ANIMAÇÃO DOS INPUTS
+// ===============================
+
+const inputs = document.querySelectorAll("input, textarea");
+
+inputs.forEach(input=>{
+
+    input.addEventListener("focus",()=>{
+
+        input.parentElement.style.transform="scale(1.02)";
+
+    });
+
+    input.addEventListener("blur",()=>{
+
+        input.parentElement.style.transform="scale(1)";
+
+    });
+
+});
+
+// ===============================
+// ENTRAR COM ENTER
+// ===============================
+
+document.addEventListener("keypress",(e)=>{
+
+    if(e.key==="Enter"){
+
+        const ativo=document.querySelector(".form.active");
+
+        if(ativo){
+
+            ativo.requestSubmit();
+
+        }
+
+    }
+
 });
