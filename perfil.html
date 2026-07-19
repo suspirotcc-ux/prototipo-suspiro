@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Suspiro | Meu Perfil</title>
+
+    <link rel="stylesheet" href="perfil.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background-circle circle1"></div>
+<div class="background-circle circle2"></div>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <div class="logo">
+
+        Suspiro
+
+    </div>
+
+    <nav>
+
+        <a href="#">Início</a>
+
+        <a href="#">Comunidade</a>
+
+        <a href="#">Explorar</a>
+
+        <a href="#"><i class="fa-solid fa-gear"></i></a>
+
+    </nav>
+
+</header>
+
+<!-- PERFIL -->
+
+<main>
+
+<div class="perfil-card">
+
+    <div class="perfil-topo">
+
+        <div class="foto">
+
+            <span id="inicial">V</span>
+
+        </div>
+
+        <div class="dados">
+
+            <h1 id="nomeUsuario">
+
+                Vitória Letícia
+
+            </h1>
+
+            <p id="arroba">
+
+                @vitorialeticia
+
+            </p>
+
+            <p id="bio">
+
+                Ainda escrevendo minha primeira história no Suspiro. 💜
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="acoes">
+
+        <button id="editarPerfil">
+
+            <i class="fa-solid fa-pen"></i>
+
+            Editar Perfil
+
+        </button>
+
+    </div>
+
+    <div class="estatisticas">
+
+        <div>
+
+            <h2 id="posts">
+
+                0
+
+            </h2>
+
+            <span>Posts</span>
+
+        </div>
+
+        <div>
+
+            <h2>
+
+                0
+
+            </h2>
+
+            <span>Seguidores</span>
+
+        </div>
+
+        <div>
+
+            <h2>
+
+                0
+
+            </h2>
+
+            <span>Seguindo</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PUBLICAÇÕES -->
+
+<section class="publicacoes">
+
+    <div class="titulo">
+
+        <h2>
+
+            Minhas Publicações
+
+        </h2>
+
+    </div>
+
+    <div class="sem-post">
+
+        <i class="fa-regular fa-image"></i>
+
+        <h3>
+
+            Nenhuma publicação ainda
+
+        </h3>
+
+        <p>
+
+            Compartilhe seu primeiro momento e inspire outras pessoas.
+
+        </p>
+
+        <button id="novoPost">
+
+            + Nova publicação
+
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Editar Perfil
+
+        </h2>
+
+        <input
+            type="text"
+            id="novoNome"
+            placeholder="Seu nome">
+
+        <input
+            type="text"
+            id="novoUsuario"
+            placeholder="@usuario">
+
+        <textarea
+            id="novaBio"
+            rows="4"
+            placeholder="Escreva sua bio..."></textarea>
+
+        <div class="modal-botoes">
+
+            <button id="salvar">
+
+                Salvar
+
+            </button>
+
+            <button id="cancelar">
+
+                Cancelar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="perfil.js"></script>
+
+</body>
+
+</html>
