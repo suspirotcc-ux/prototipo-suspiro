@@ -62,8 +62,12 @@ loginForm.addEventListener("submit",function(e){
 
     }
 
-    alert("Login realizado com sucesso! (Modo demonstração)");
+   setTimeout(()=>{
 
+    window.location.href="perfil.html";
+
+},500);
+    
 });
 
 // ===============================
@@ -100,10 +104,22 @@ registerForm.addEventListener("submit",function(e){
 
     }
 
-    mensagem.style.color="#7dff9d";
+   mensagem.style.color="#7dff9d";
 
-    mensagem.innerHTML="Conta criada com sucesso! 💜";
+mensagem.innerHTML="Conta criada com sucesso! 💜";
 
-    registerForm.reset();
+// salva os dados
 
-});
+localStorage.setItem("nome", usuario);
+
+localStorage.setItem("usuario","@" + usuario);
+
+localStorage.setItem("email", email);
+
+// espera 1 segundo
+
+setTimeout(()=>{
+
+    window.location.href="perfil.html";
+
+},1000);
