@@ -885,3 +885,22 @@ footer p{
     transform:translateY(0);
 
 }
+
+/* Botão Criar Perfil */
+.cta .btn-criar {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--roxo), var(--roxoHover));
+    color: white;
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all .3s ease;
+    box-shadow: 0 15px 30px rgba(163,112,247,.35);
+}
+
+.cta .btn-criar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(163,112,247,.45);
+}
