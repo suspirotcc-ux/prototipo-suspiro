@@ -75,54 +75,43 @@ setTimeout(()=>{
 // CADASTRO
 // ===============================
 
-registerForm.addEventListener("submit",function(e){
+registerForm.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const usuario=document.getElementById("username").value.trim();
+    const usuario = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
 
-    const email=document.getElementById("email").value.trim();
+    if(usuario === "" || email === "" || senha === ""){
 
-    const senha=document.getElementById("senha").value.trim();
-
-    if(usuario==="" || email==="" || senha===""){
-
-        mensagem.style.color="#ff7373";
-
-        mensagem.innerHTML="Preencha todos os campos obrigatórios.";
-
+        mensagem.style.color = "#ff7373";
+        mensagem.innerHTML = "Preencha todos os campos obrigatórios.";
         return;
 
     }
 
-    if(senha.length<6){
+    if(senha.length < 6){
 
-        mensagem.style.color="#ff7373";
-
-        mensagem.innerHTML="A senha deve possuir pelo menos 6 caracteres.";
-
+        mensagem.style.color = "#ff7373";
+        mensagem.innerHTML = "A senha deve possuir pelo menos 6 caracteres.";
         return;
 
     }
 
-   mensagem.style.color="#7dff9d";
+    // Salva os dados do usuário
+    localStorage.setItem("nome", usuario);
+    localStorage.setItem("usuario", "@" + usuario);
+    localStorage.setItem("email", email);
 
-mensagem.innerHTML="Conta criada com sucesso! 💜";
+    mensagem.style.color = "#7dff9d";
+    mensagem.innerHTML = "Conta criada com sucesso! 💜";
 
-// salva os dados
+    setTimeout(() => {
 
-localStorage.setItem("nome", usuario);
+        window.location.href = "perfil.html";
 
-localStorage.setItem("usuario","@" + usuario);
+    }, 1000);
 
-localStorage.setItem("email", email);
-
-// espera 1 segundo
-
-setTimeout(()=>{
-
-    window.location.href="perfil.html";
-
-},1000);
-
+});
 });
