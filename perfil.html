@@ -3,20 +3,20 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Suspiro | Meu Perfil</title>
+<title>Suspiro | Meu Perfil</title>
 
-    <link rel="stylesheet" href="perfil.css">
+<link rel="stylesheet" href="perfil.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -24,8 +24,6 @@
 
 <div class="background-circle circle1"></div>
 <div class="background-circle circle2"></div>
-
-<!-- NAVBAR -->
 
 <header>
 
@@ -43,13 +41,13 @@
 
         <a href="#">Explorar</a>
 
-        <a href="#"><i class="fa-solid fa-gear"></i></a>
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+        </a>
 
     </nav>
 
 </header>
-
-<!-- PERFIL -->
 
 <main>
 
@@ -83,19 +81,15 @@
 
             </p>
 
+            <button id="editarPerfil">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Editar Perfil
+
+            </button>
+
         </div>
-
-    </div>
-
-    <div class="acoes">
-
-        <button id="editarPerfil">
-
-            <i class="fa-solid fa-pen"></i>
-
-            Editar Perfil
-
-        </button>
 
     </div>
 
@@ -141,176 +135,92 @@
 
 </div>
 
-<!-- PUBLICAÇÕES -->
+<!-- ===========================
+TOP FAVORITOS
+=========================== -->
 
-<section class="publicacoes">
+<section class="tops">
 
-    <div class="titulo">
+    <h2>
 
-        <h2>
+        Top Favoritos
 
-            Minhas Publicações
+    </h2>
 
-        </h2>
+    <div class="tops-grid">
 
-    </div>
+        <div class="top-card" data-tipo="filme">
 
-    <div class="sem-post">
+            <div class="top-capa">
 
-        <i class="fa-regular fa-image"></i>
+                <i class="fa-solid fa-film"></i>
 
-        <h3>
+            </div>
 
-            Nenhuma publicação ainda
+            <h3>Filme</h3>
 
-        </h3>
+            <p id="topFilme">
 
-        <p>
+                Adicionar favorito
 
-            Compartilhe seu primeiro momento e inspire outras pessoas.
+            </p>
 
-        </p>
+        </div>
 
-        <button id="novoPost">
+        <div class="top-card" data-tipo="musica">
 
-            + Nova publicação
+            <div class="top-capa">
 
-        </button>
+                <i class="fa-solid fa-music"></i>
 
-    </div>
+            </div>
 
-</section>
+            <h3>Música</h3>
 
-</main>
+            <p id="topMusica">
 
-<!-- MODAL -->
+                Adicionar favorito
 
-<div class="modal" id="modal">
+            </p>
 
-    <div class="modal-content">
+        </div>
 
-        <h2>
+        <div class="top-card" data-tipo="livro">
 
-            Editar Perfil
+            <div class="top-capa">
 
-        </h2>
+                <i class="fa-solid fa-book"></i>
 
-        <input
-            type="text"
-            id="novoNome"
-            placeholder="Seu nome">
+            </div>
 
-        <input
-            type="text"
-            id="novoUsuario"
-            placeholder="@usuario">
+            <h3>Livro</h3>
 
-        <textarea
-            id="novaBio"
-            rows="4"
-            placeholder="Escreva sua bio..."></textarea>
+            <p id="topLivro">
 
-        <div class="modal-botoes">
+                Adicionar favorito
 
-            <button id="salvar">
+            </p>
 
-                Salvar
+        </div>
 
-            </button>
+        <div class="top-card" data-tipo="jogo">
 
-            <button id="cancelar">
+            <div class="top-capa">
 
-                Cancelar
+                <i class="fa-solid fa-gamepad"></i>
 
-            </button>
+            </div>
+
+            <h3>Jogo</h3>
+
+            <p id="topJogo">
+
+                Adicionar favorito
+
+            </p>
 
         </div>
 
     </div>
 
-</div>
-
-<script src="perfil.js"></script>
-
-
-    <!-- ===========================
-MODAL NOVA PUBLICAÇÃO
-=========================== -->
-
-<div class="modal-post" id="modalPost">
-
-    <div class="modal-box">
-
-        <h2>Nova publicação</h2>
-
-        <p>Como deseja compartilhar hoje?</p>
-
-        <button id="btnFoto" class="tipo-post">
-            📷 Publicar uma foto
-        </button>
-
-        <button id="btnPensamento" class="tipo-post">
-            💭 Compartilhar um pensamento
-        </button>
-
-        <button id="fecharModal" class="cancelar">
-            Cancelar
-        </button>
-
-    </div>
-
-</div>
-
-<!-- ===========================
-MODAL FOTO
-=========================== -->
-
-<div id="listaPosts"></div>
-
-<div class="sem-post" id="semPost">
-    <div class="modal-box">
-
-        <h2>Nova publicação</h2>
-
-        <input type="file" id="imagemPost" accept="image/*">
-
-        <textarea
-            id="legendaPost"
-            placeholder="Escreva uma legenda..."></textarea>
-
-        <button id="publicarFoto" class="btn-publicar">
-
-            Publicar
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- ===========================
-MODAL PENSAMENTO
-=========================== -->
-
-<div class="modal-post" id="modalPensamento">
-
-    <div class="modal-box">
-
-        <h2>Compartilhar pensamento</h2>
-
-        <textarea
-            id="textoPensamento"
-            placeholder="O que você está pensando?"></textarea>
-
-        <button id="publicarPensamento" class="btn-publicar">
-
-            Publicar
-
-        </button>
-
-    </div>
-
-</div>
-</body>
-
-</html>
+</section>
