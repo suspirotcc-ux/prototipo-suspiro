@@ -376,3 +376,160 @@ publicarPensamento.addEventListener("click",()=>{
     modalPensamento.classList.remove("ativo");
 
 });
+// =====================================
+// APAGAR PUBLICAÇÃO
+// =====================================
+
+function apagarPost(indice){
+
+    const confirmar = confirm("Deseja realmente apagar esta publicação?");
+
+    if(!confirmar) return;
+
+    posts.splice(indice,1);
+
+    localStorage.setItem("posts",JSON.stringify(posts));
+
+    renderizarPosts();
+
+}
+
+// =====================================
+// MOSTRAR / ESCONDER "SEM POSTS"
+// =====================================
+
+function atualizarEstadoPerfil(){
+
+    const semPost = document.getElementById("semPost");
+
+    if(!semPost) return;
+
+    if(posts.length===0){
+
+        semPost.style.display="block";
+
+    }else{
+
+        semPost.style.display="none";
+
+    }
+
+}
+
+// =====================================
+// ATUALIZA RENDERIZAÇÃO
+// =====================================
+
+const renderOriginal = renderizarPosts;
+
+renderizarPosts = function(){
+
+    renderOriginal();
+
+    atualizarEstadoPerfil();
+
+};
+
+// Atualiza ao abrir a página
+
+renderizarPosts();
+
+// =====================================
+// FECHAR MODAIS CLICANDO FORA
+// =====================================
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===modal){
+
+        modal.classList.remove("ativo");
+
+    }
+
+    if(e.target===modalPost){
+
+        modalPost.classList.remove("ativo");
+
+    }
+
+    if(e.target===modalPensamento){
+
+        modalPensamento.classList.remove("ativo");
+
+    }
+
+});
+
+// =====================================
+// TECLA ESC FECHA MODAIS
+// =====================================
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        modal.classList.remove("ativo");
+
+        modalPost.classList.remove("ativo");
+
+        modalPensamento.classList.remove("ativo");
+
+    }
+
+});
+
+// =====================================
+// ANIMAÇÃO DOS POSTS
+// =====================================
+
+const observer = new MutationObserver(()=>{
+
+    document.querySelectorAll(".post").forEach(post=>{
+
+        post.style.opacity="0";
+
+        post.style.transform="translateY(25px)";
+
+        setTimeout(()=>{
+
+            post.style.transition=".4s";
+
+            post.style.opacity="1";
+
+            post.style.transform="translateY(0)";
+
+        },100);
+
+    });
+
+});
+
+observer.observe(listaPosts,{
+
+    childList:true
+
+});
+
+// =====================================
+// CARREGAR POSTS AO ABRIR
+// =====================================
+
+window.addEventListener("load",()=>{
+
+    renderizarPosts();
+
+});
+
+// =====================================
+// FUTURAMENTE
+// =====================================
+
+// Aqui vamos adicionar:
+//
+// ⭐ Tops Favoritos (Letterboxd)
+// 📚 Livros
+// 🎬 Filmes
+// 🎮 Jogos
+// 🎵 Músicas
+//
+// Tudo usando a MESMA fileira.
