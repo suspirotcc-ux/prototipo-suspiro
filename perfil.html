@@ -232,6 +232,85 @@
 
 <script src="perfil.js"></script>
 
+
+    <!-- ===========================
+MODAL NOVA PUBLICAÇÃO
+=========================== -->
+
+<div class="modal-post" id="modalPost">
+
+    <div class="modal-box">
+
+        <h2>Nova publicação</h2>
+
+        <p>Como deseja compartilhar hoje?</p>
+
+        <button id="btnFoto" class="tipo-post">
+            📷 Publicar uma foto
+        </button>
+
+        <button id="btnPensamento" class="tipo-post">
+            💭 Compartilhar um pensamento
+        </button>
+
+        <button id="fecharModal" class="cancelar">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL FOTO
+=========================== -->
+
+<div id="listaPosts"></div>
+
+<div class="sem-post" id="semPost">
+    <div class="modal-box">
+
+        <h2>Nova publicação</h2>
+
+        <input type="file" id="imagemPost" accept="image/*">
+
+        <textarea
+            id="legendaPost"
+            placeholder="Escreva uma legenda..."></textarea>
+
+        <button id="publicarFoto" class="btn-publicar">
+
+            Publicar
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL PENSAMENTO
+=========================== -->
+
+<div class="modal-post" id="modalPensamento">
+
+    <div class="modal-box">
+
+        <h2>Compartilhar pensamento</h2>
+
+        <textarea
+            id="textoPensamento"
+            placeholder="O que você está pensando?"></textarea>
+
+        <button id="publicarPensamento" class="btn-publicar">
+
+            Publicar
+
+        </button>
+
+    </div>
+
+</div>
 </body>
 
 </html>
