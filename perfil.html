@@ -224,3 +224,211 @@ TOP FAVORITOS
     </div>
 
 </section>
+    <!-- ===========================
+PUBLICAÇÕES
+=========================== -->
+
+<section class="publicacoes">
+
+    <div class="titulo-publicacoes">
+
+        <h2>
+
+            Minhas Publicações
+
+        </h2>
+
+        <button id="novoPost" class="btn-publicacao">
+
+            + Nova publicação
+
+        </button>
+
+    </div>
+
+    <div id="listaPosts">
+
+    </div>
+
+    <div class="sem-post" id="semPost">
+
+        <i class="fa-regular fa-image"></i>
+
+        <h3>
+
+            Nenhuma publicação ainda
+
+        </h3>
+
+        <p>
+
+            Compartilhe seu primeiro momento e inspire outras pessoas.
+
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- ===========================
+MODAL EDITAR PERFIL
+=========================== -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Editar Perfil
+
+        </h2>
+
+        <input
+            type="text"
+            id="novoNome"
+            placeholder="Seu nome">
+
+        <input
+            type="text"
+            id="novoUsuario"
+            placeholder="@usuario">
+
+        <textarea
+            id="novaBio"
+            rows="4"
+            placeholder="Escreva sua bio..."></textarea>
+
+        <div class="modal-botoes">
+
+            <button id="salvar">
+
+                Salvar
+
+            </button>
+
+            <button id="cancelar">
+
+                Cancelar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL ESCOLHER TIPO DE POST
+=========================== -->
+
+<div class="modal-post" id="modalPost">
+
+    <div class="modal-box">
+
+        <h2>
+
+            Nova publicação
+
+        </h2>
+
+        <p>
+
+            Como deseja compartilhar hoje?
+
+        </p>
+
+        <button id="btnFoto" class="tipo-post">
+
+            📷 Publicar uma foto
+
+        </button>
+
+        <button id="btnPensamento" class="tipo-post">
+
+            💭 Compartilhar um pensamento
+
+        </button>
+
+        <button id="fecharModal" class="cancelar">
+
+            Cancelar
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL FOTO
+=========================== -->
+
+<div class="modal-post" id="modalFoto">
+
+    <div class="modal-box">
+
+        <h2>
+
+            Publicar Foto
+
+        </h2>
+
+        <input
+            type="file"
+            id="imagemPost"
+            accept="image/*">
+
+        <textarea
+            id="legendaPost"
+            placeholder="Escreva uma legenda..."></textarea>
+
+        <button
+            id="publicarFoto"
+            class="btn-publicar">
+
+            Publicar
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL PENSAMENTO
+=========================== -->
+
+<div class="modal-post" id="modalPensamento">
+
+    <div class="modal-box">
+
+        <h2>
+
+            Compartilhar pensamento
+
+        </h2>
+
+        <textarea
+            id="textoPensamento"
+            placeholder="O que você está pensando?"></textarea>
+
+        <button
+            id="publicarPensamento"
+            class="btn-publicar">
+
+            Publicar
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="perfil.js"></script>
+
+</body>
+</html>
