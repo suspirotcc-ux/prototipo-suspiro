@@ -1,8 +1,271 @@
-// ===============================
-// ELEMENTOS
-// ===============================
+// ========================================
+// CARREGAR DADOS DO USUÁRIO
+// ========================================
 
-const modal = document.getElementById("modal");
+const nome = localStorage.getItem("nome") || "Usuário";
+const usuario = localStorage.getItem("usuario") || "@usuario";
+
+document.getElementById("nomeUsuario").textContent = nome;
+document.getElementById("arroba").textContent = usuario;
+document.getElementById("inicial").textContent = nome.charAt(0).toUpperCase();
+
+
+// ========================================
+// ELEMENTOS
+// ========================================
+
+const btnNovoPost = document.getElementById("novoPost");
+
+const modalPost = document.getElementById("modalPost");
+const modalFoto = document.getElementById("modalFoto");
+const modalPensamento = document.getElementById("modalPensamento");
+
+const btnFoto = document.getElementById("btnFoto");
+const btnPensamento = document.getElementById("btnPensamento");
+const fecharModal = document.getElementById("fecharModal");
+
+const publicarFoto = document.getElementById("publicarFoto");
+const publicarPensamento = document.getElementById("publicarPensamento");
+
+const listaPosts = document.getElementById("listaPosts");
+const semPost = document.getElementById("semPost");
+
+const contadorPosts = document.getElementById("posts");
+
+
+// ========================================
+// ABRIR MODAIS
+// ========================================
+
+btnNovoPost.onclick = () => {
+
+    modalPost.classList.add("ativo");
+
+}
+
+fecharModal.onclick = () => {
+
+    modalPost.classList.remove("ativo");
+
+}
+
+btnFoto.onclick = () => {
+
+    modalPost.classList.remove("ativo");
+
+    modalFoto.classList.add("ativo");
+
+}
+
+btnPensamento.onclick = () => {
+
+    modalPost.classList.remove("ativo");
+
+    modalPensamento.classList.add("ativo");
+
+}
+
+
+// ========================================
+// FECHAR AO CLICAR FORA
+// ========================================
+
+window.onclick = function(e){
+
+    if(e.target == modalPost){
+
+        modalPost.classList.remove("ativo");
+
+    }
+
+    if(e.target == modalFoto){
+
+        modalFoto.classList.remove("ativo");
+
+    }
+
+    if(e.target == modalPensamento){
+
+        modalPensamento.classList.remove("ativo");
+
+    }
+
+}
+
+
+// ========================================
+// CONTADOR
+// ========================================
+
+function atualizarQuantidade(){
+
+    contadorPosts.innerHTML = listaPosts.children.length;
+
+    if(listaPosts.children.length > 0){
+
+        semPost.style.display = "none";
+
+    }else{
+
+        semPost.style.display = "block";
+
+    }
+
+}
+
+
+// ========================================
+// CRIAR POST
+// ========================================
+
+function criarPost(texto, imagem = ""){
+
+    const div = document.createElement("div");
+
+    div.className = "post";
+
+    div.innerHTML = `
+
+    <div class="post-topo">
+
+        <div class="post-usuario">
+
+            <div class="post-avatar">
+
+                ${nome.charAt(0).toUpperCase()}
+
+            </div>
+
+            <div>
+
+                <div class="post-nome">${nome}</div>
+
+                <div class="post-arroba">${usuario}</div>
+
+            </div>
+
+        </div>
+
+        <div class="menu-post">⋮</div>
+
+    </div>
+
+    ${imagem}
+
+    <div class="post-texto">
+
+        ${texto}
+
+    </div>
+
+    <div class="acoes-post">
+
+        ❤️ 0 Curtidas
+
+        💬 0 Comentários
+
+    </div>
+
+    <button class="excluir-post">
+
+        Excluir publicação
+
+    </button>
+
+    `;
+
+    div.querySelector(".excluir-post").onclick = function(){
+
+        if(confirm("Deseja realmente apagar esta publicação?")){
+
+            div.remove();
+
+            atualizarQuantidade();
+
+        }
+
+    }
+
+    listaPosts.prepend(div);
+
+    atualizarQuantidade();
+
+}
+
+
+// ========================================
+// PUBLICAR FOTO
+// ========================================
+
+publicarFoto.onclick = function(){
+
+    const arquivo = document.getElementById("imagemPost").files[0];
+
+    const legenda = document.getElementById("legendaPost").value;
+
+    if(!arquivo){
+
+        alert("Escolha uma imagem.");
+
+        return;
+
+    }
+
+    const leitor = new FileReader();
+
+    leitor.onload = function(e){
+
+        criarPost(
+
+            legenda,
+
+            `<img src="${e.target.result}">`
+
+        );
+
+    }
+
+    leitor.readAsDataURL(arquivo);
+
+    modalFoto.classList.remove("ativo");
+
+    document.getElementById("imagemPost").value = "";
+
+    document.getElementById("legendaPost").value = "";
+
+}
+
+
+// ========================================
+// PUBLICAR PENSAMENTO
+// ========================================
+
+publicarPensamento.onclick = function(){
+
+    const texto = document.getElementById("textoPensamento").value;
+
+    if(texto == ""){
+
+        alert("Escreva alguma coisa.");
+
+        return;
+
+    }
+
+    criarPost(texto);
+
+    modalPensamento.classList.remove("ativo");
+
+    document.getElementById("textoPensamento").value = "";
+
+}
+
+
+// ========================================
+// EDITAR PERFIL
+// ========================================
+
+const modalEditar = document.getElementById("modal");
 
 const editarPerfil = document.getElementById("editarPerfil");
 
@@ -10,270 +273,46 @@ const cancelar = document.getElementById("cancelar");
 
 const salvar = document.getElementById("salvar");
 
-const novoPost = document.getElementById("novoPost");
-
-const nome = document.getElementById("nomeUsuario");
-
-const usuario = document.getElementById("arroba");
-
-const bio = document.getElementById("bio");
-
-const inicial = document.getElementById("inicial");
-
-const posts = document.getElementById("posts");
-
-const publicacoes = document.querySelector(".publicacoes");
-
-// ===============================
-// MODAL EDITAR PERFIL
-// ===============================
-
 editarPerfil.onclick = () => {
 
-    modal.style.display = "flex";
+    modalEditar.style.display = "flex";
 
 }
 
 cancelar.onclick = () => {
 
-    modal.style.display = "none";
+    modalEditar.style.display = "none";
 
 }
 
 salvar.onclick = () => {
 
-    const novoNome = document.getElementById("novoNome").value.trim();
+    const novoNome = document.getElementById("novoNome").value;
+    const novoUsuario = document.getElementById("novoUsuario").value;
+    const novaBio = document.getElementById("novaBio").value;
 
-    const novoUsuario = document.getElementById("novoUsuario").value.trim();
+    if(novoNome != ""){
 
-    const novaBio = document.getElementById("novaBio").value.trim();
-
-    if(novoNome !== ""){
-
-        nome.innerHTML = novoNome;
-
-        inicial.innerHTML = novoNome.charAt(0).toUpperCase();
+        document.getElementById("nomeUsuario").innerHTML = novoNome;
 
         localStorage.setItem("nome", novoNome);
 
     }
 
-    if(novoUsuario !== ""){
+    if(novoUsuario != ""){
 
-        usuario.innerHTML = "@" + novoUsuario.replace("@","");
+        document.getElementById("arroba").innerHTML = novoUsuario;
 
-        localStorage.setItem("usuario", "@" + novoUsuario.replace("@",""));
-
-    }
-
-    if(novaBio !== ""){
-
-        bio.innerHTML = novaBio;
-
-        localStorage.setItem("bio", novaBio);
+        localStorage.setItem("usuario", novoUsuario);
 
     }
 
-    modal.style.display = "none";
+    if(novaBio != ""){
 
-}
-
-// ===============================
-// NOVA PUBLICAÇÃO
-// ===============================
-
-novoPost.onclick = () => {
-
-    let texto = prompt("O que você gostaria de compartilhar?");
-
-    if(texto == null || texto.trim() == "") return;
-
-    criarPost(texto);
-
-}
-
-// ===============================
-// CRIAR POST
-// ===============================
-
-function criarPost(texto){
-
-    const card = document.createElement("div");
-
-    card.className = "post";
-
-    card.innerHTML = `
-
-        <div class="post-topo">
-
-            <div class="mini-foto">${inicial.innerHTML}</div>
-
-            <div>
-
-                <strong>${nome.innerHTML}</strong>
-
-                <p>${usuario.innerHTML}</p>
-
-            </div>
-
-        </div>
-
-        <div class="texto-post">
-
-            ${texto}
-
-        </div>
-
-        <div class="post-acoes">
-
-            <button>❤️ Curtir</button>
-
-            <button>💬 Comentar</button>
-
-            <button>🔖 Salvar</button>
-
-        </div>
-
-    `;
-
-    const vazio = document.querySelector(".sem-post");
-
-    if(vazio){
-
-        vazio.remove();
+        document.getElementById("bio").innerHTML = novaBio;
 
     }
 
-    publicacoes.appendChild(card);
-
-    salvarPost(texto);
-
-    atualizarContador();
-
-}
-
-// ===============================
-// CARREGAR POSTS
-// ===============================
-
-function criarPostSemSalvar(texto){
-
-    const card = document.createElement("div");
-
-    card.className = "post";
-
-    card.innerHTML = `
-
-        <div class="post-topo">
-
-            <div class="mini-foto">${inicial.innerHTML}</div>
-
-            <div>
-
-                <strong>${nome.innerHTML}</strong>
-
-                <p>${usuario.innerHTML}</p>
-
-            </div>
-
-        </div>
-
-        <div class="texto-post">
-
-            ${texto}
-
-        </div>
-
-        <div class="post-acoes">
-
-            <button>❤️ Curtir</button>
-
-            <button>💬 Comentar</button>
-
-            <button>🔖 Salvar</button>
-
-        </div>
-
-    `;
-
-    const vazio = document.querySelector(".sem-post");
-
-    if(vazio){
-
-        vazio.remove();
-
-    }
-
-    publicacoes.appendChild(card);
-
-    atualizarContador();
-
-}
-
-// ===============================
-// CONTADOR
-// ===============================
-
-function atualizarContador(){
-
-    const quantidade = document.querySelectorAll(".post").length;
-
-    posts.innerHTML = quantidade;
-
-}
-
-// ===============================
-// LOCAL STORAGE
-// ===============================
-
-function salvarPost(texto){
-
-    let lista = JSON.parse(localStorage.getItem("posts")) || [];
-
-    lista.push(texto);
-
-    localStorage.setItem("posts", JSON.stringify(lista));
-
-}
-
-function carregarPosts(){
-
-    let lista = JSON.parse(localStorage.getItem("posts")) || [];
-
-    lista.forEach(texto => {
-
-        criarPostSemSalvar(texto);
-
-    });
-
-}
-
-// ===============================
-// CARREGAR PERFIL
-// ===============================
-
-window.onload = () => {
-
-    if(localStorage.getItem("nome")){
-
-        nome.innerHTML = localStorage.getItem("nome");
-
-        inicial.innerHTML = localStorage.getItem("nome").charAt(0).toUpperCase();
-
-    }
-
-    if(localStorage.getItem("usuario")){
-
-        usuario.innerHTML = localStorage.getItem("usuario");
-
-    }
-
-    if(localStorage.getItem("bio")){
-
-        bio.innerHTML = localStorage.getItem("bio");
-
-    }
-
-    carregarPosts();
+    modalEditar.style.display = "none";
 
 }
