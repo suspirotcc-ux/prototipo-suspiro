@@ -3,9 +3,11 @@ let categoriaAtual = "";
 const modalTop = document.getElementById("modalTop");
 const pesquisa = document.getElementById("pesquisaTop");
 const resultados = document.getElementById("listaResultados");
+const fecharTop = document.getElementById("fecharTop");
 
 
-function abrirModal(tipo){
+// ABRIR MODAL
+function abrirModal(tipo) {
 
     categoriaAtual = tipo;
 
@@ -18,57 +20,78 @@ function abrirModal(tipo){
 }
 
 
-document.getElementById("fecharTop").onclick = () => {
+// FECHAR MODAL
+fecharTop.onclick = function(){
 
     modalTop.style.display = "none";
 
 };
 
 
-pesquisa.onkeyup = () => {
+// PESQUISA
+pesquisa.addEventListener("input", function(){
 
     mostrarLista(pesquisa.value);
 
-};
+});
 
 
 
+// MOSTRAR OPÇÕES
 function mostrarLista(texto){
 
     resultados.innerHTML = "";
 
+
     let lista = [];
 
 
-    if(categoriaAtual === "filme") lista = filmes;
-    if(categoriaAtual === "livro") lista = livros;
-    if(categoriaAtual === "jogo") lista = jogos;
-    if(categoriaAtual === "musica") lista = musicas;
+    if(categoriaAtual === "filme"){
+        lista = filmes;
+    }
+
+    if(categoriaAtual === "livro"){
+        lista = livros;
+    }
+
+    if(categoriaAtual === "jogo"){
+        lista = jogos;
+    }
+
+    if(categoriaAtual === "musica"){
+        lista = musicas;
+    }
 
 
 
     lista
     .filter(item =>
-        item.nome.toLowerCase().includes(texto.toLowerCase())
+        item.nome
+        .toLowerCase()
+        .includes(texto.toLowerCase())
     )
     .forEach(item => {
 
 
-        const div = document.createElement("div");
-
-        div.className = "resultado";
-
-        div.textContent = item.nome;
+        const opcao = document.createElement("div");
 
 
-        div.onclick = () => {
+        opcao.classList.add("resultado");
+
+
+        opcao.innerHTML = item.nome;
+
+
+
+        opcao.onclick = function(){
 
             selecionarTop(item);
 
         };
 
 
-        resultados.appendChild(div);
+
+        resultados.appendChild(opcao);
 
 
     });
@@ -78,23 +101,42 @@ function mostrarLista(texto){
 
 
 
+// SELECIONAR FAVORITO
 function selecionarTop(item){
 
 
+    const categoria = primeiraMaiuscula(categoriaAtual);
+
+
     const nome = document.getElementById(
-        "nome" + primeiraMaiuscula(categoriaAtual)
+        "nome" + categoria
     );
 
 
     const capa = document.getElementById(
-        "capa" + primeiraMaiuscula(categoriaAtual)
+        "capa" + categoria
     );
 
 
-    nome.textContent = item.nome;
+
+    if(nome && capa){
 
 
-    capa.src = item.capa;
+        nome.innerHTML = item.nome;
+
+
+        capa.src = item.capa;
+
+
+        capa.onerror = function(){
+
+            capa.src = "assets/capas/placeholder.png";
+
+        };
+
+
+    }
+
 
 
     localStorage.setItem(
@@ -103,6 +145,7 @@ function selecionarTop(item){
     );
 
 
+
     modalTop.style.display = "none";
 
 
@@ -110,6 +153,7 @@ function selecionarTop(item){
 
 
 
+// PRIMEIRA LETRA MAIÚSCULA
 function primeiraMaiuscula(texto){
 
     return texto.charAt(0).toUpperCase() + texto.slice(1);
@@ -118,15 +162,24 @@ function primeiraMaiuscula(texto){
 
 
 
-// carregar favoritos salvos quando abrir página
+// CARREGAR FAVORITOS SALVOS
+window.addEventListener("load", function(){
 
-window.onload = () => {
+
+    const categorias = [
+        "filme",
+        "livro",
+        "jogo",
+        "musica"
+    ];
 
 
-    ["filme","livro","jogo","musica"].forEach(tipo=>{
+
+    categorias.forEach(tipo=>{
 
 
         const salvo = localStorage.getItem(tipo);
+
 
 
         if(salvo){
@@ -135,15 +188,31 @@ window.onload = () => {
             const item = JSON.parse(salvo);
 
 
-            document.getElementById(
-                "nome" + primeiraMaiuscula(tipo)
-            ).textContent = item.nome;
+            const categoria = primeiraMaiuscula(tipo);
 
 
 
-            document.getElementById(
-                "capa" + primeiraMaiuscula(tipo)
-            ).src = item.capa;
+            const nome = document.getElementById(
+                "nome" + categoria
+            );
+
+
+            const capa = document.getElementById(
+                "capa" + categoria
+            );
+
+
+
+            if(nome && capa){
+
+
+                nome.innerHTML = item.nome;
+
+
+                capa.src = item.capa;
+
+
+            }
 
 
         }
@@ -152,4 +221,4 @@ window.onload = () => {
     });
 
 
-};
+});
