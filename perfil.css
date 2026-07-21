@@ -1097,3 +1097,74 @@ nav{
 }
 
 }
+/* ===========================
+TOPS
+=========================== */
+
+.tops{
+
+    margin-top:40px;
+
+}
+
+.tops h2{
+
+    margin-bottom:20px;
+
+}
+
+.tops-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+.top-card{
+
+    background:#22192f;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    text-align:center;
+
+}
+
+.top-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.top-card img{
+
+    width:100%;
+
+    aspect-ratio:2/3;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
+}
+
+.top-card span{
+
+    display:block;
+
+    color:white;
+
+    font-size:14px;
+
+}
