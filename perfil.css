@@ -1,6 +1,6 @@
-/* ===================================
+/* ==========================================
 RESET
-=================================== */
+========================================== */
 
 *{
     margin:0;
@@ -12,14 +12,15 @@ RESET
 
     --bg:#120c17;
     --bg2:#1b1324;
-    --card:#23192f;
-    --card2:#2a2037;
+    --card:#1d1628;
 
     --roxo:#A370F7;
-    --roxoHover:#BB8EFF;
+    --roxoHover:#C29BFF;
 
-    --texto:#F6F1FF;
+    --texto:#F5F1FF;
     --texto2:#B8ABD0;
+
+    --input:#2b2038;
 
     --borda:rgba(255,255,255,.08);
 
@@ -28,35 +29,44 @@ RESET
 body{
 
     font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#120c17,#1b1324,#251937);
+
+    background:linear-gradient(135deg,#120c17,#1b1324,#2b1c40);
+
     color:var(--texto);
+
     min-height:100vh;
+
     overflow-x:hidden;
 
 }
 
-/* ===================================
+/* ==========================================
 BOLHAS
-=================================== */
+========================================== */
 
 .background-circle{
 
     position:fixed;
+
     border-radius:50%;
+
     filter:blur(120px);
-    opacity:.20;
+
+    opacity:.22;
+
     z-index:-1;
 
 }
 
 .circle1{
 
-    width:350px;
-    height:350px;
-    background:#8b5cf6;
+    width:340px;
+    height:340px;
 
-    top:-120px;
-    left:-120px;
+    background:#7c4dff;
+
+    top:-80px;
+    left:-60px;
 
 }
 
@@ -64,44 +74,50 @@ BOLHAS
 
     width:300px;
     height:300px;
-    background:#b989ff;
 
-    right:-120px;
-    bottom:-120px;
+    background:#b388ff;
+
+    bottom:-60px;
+    right:-60px;
 
 }
 
-/* ===================================
+/* ==========================================
 HEADER
-=================================== */
+========================================== */
 
 header{
 
-    position:sticky;
-    top:0;
-
     width:100%;
 
+    padding:22px 8%;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    padding:20px 8%;
+    position:sticky;
 
-    background:rgba(18,12,23,.75);
+    top:0;
 
     backdrop-filter:blur(20px);
 
+    background:rgba(18,12,23,.55);
+
     border-bottom:1px solid rgba(255,255,255,.05);
 
-    z-index:1000;
+    z-index:100;
 
 }
 
 .logo{
 
     font-size:30px;
+
     font-weight:700;
+
     color:var(--roxo);
 
 }
@@ -109,15 +125,20 @@ header{
 nav{
 
     display:flex;
-    gap:30px;
+
+    gap:35px;
 
 }
 
 nav a{
 
-    color:var(--texto2);
     text-decoration:none;
+
+    color:var(--texto2);
+
     transition:.3s;
+
+    font-weight:500;
 
 }
 
@@ -127,32 +148,33 @@ nav a:hover{
 
 }
 
-/* ===================================
+/* ==========================================
 MAIN
-=================================== */
+========================================== */
 
 main{
 
     width:min(1100px,92%);
+
     margin:45px auto;
 
 }
 
-/* ===================================
+/* ==========================================
 CARD PERFIL
-=================================== */
+========================================== */
 
 .perfil-card{
 
     background:var(--card);
 
-    border:1px solid var(--borda);
-
     border-radius:28px;
 
     padding:35px;
 
-    box-shadow:0 20px 40px rgba(0,0,0,.30);
+    border:1px solid var(--borda);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
 
 }
 
@@ -160,21 +182,21 @@ CARD PERFIL
 
     display:flex;
 
-    align-items:center;
+    gap:28px;
 
-    gap:30px;
+    align-items:center;
 
 }
 
 .foto{
 
-    width:120px;
+    width:135px;
 
-    height:120px;
+    height:135px;
 
     border-radius:50%;
 
-    background:linear-gradient(45deg,#8c5cf6,#bb8eff);
+    background:linear-gradient(45deg,#8c5cf6,#c39cff);
 
     display:flex;
 
@@ -182,9 +204,9 @@ CARD PERFIL
 
     align-items:center;
 
-    font-size:48px;
+    font-size:58px;
 
-    font-weight:bold;
+    font-weight:700;
 
     color:white;
 
@@ -202,47 +224,39 @@ CARD PERFIL
 
     font-size:34px;
 
-    margin-bottom:8px;
-
 }
 
 #arroba{
 
-    color:var(--texto2);
+    margin-top:6px;
 
-    margin-bottom:15px;
+    color:var(--texto2);
 
 }
 
 #bio{
 
-    color:var(--texto2);
+    margin:18px 0;
 
-    line-height:1.8;
+    line-height:1.7;
 
-    margin-bottom:20px;
+    color:#ddd;
 
 }
 
-/* ===================================
-BOTÃO EDITAR
-=================================== */
-
 #editarPerfil{
 
+    padding:12px 24px;
+
     border:none;
-
-    background:linear-gradient(45deg,#8c5cf6,#bb8eff);
-
-    color:white;
-
-    padding:14px 28px;
 
     border-radius:40px;
 
     cursor:pointer;
 
-    font-size:15px;
+    background:linear-gradient(45deg,#8b5cf6,#bb8eff);
+
+    color:white;
 
     font-weight:600;
 
@@ -254,33 +268,27 @@ BOTÃO EDITAR
 
     transform:translateY(-3px);
 
-    box-shadow:0 12px 30px rgba(163,112,247,.35);
-
 }
 
-/* ===================================
+/* ==========================================
 ESTATÍSTICAS
-=================================== */
+========================================== */
 
 .estatisticas{
 
+    display:flex;
+
+    justify-content:space-around;
+
     margin-top:35px;
 
-    display:grid;
+    border-top:1px solid rgba(255,255,255,.05);
 
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
+    padding-top:25px;
 
 }
 
 .estatisticas div{
-
-    background:var(--card2);
-
-    border-radius:18px;
-
-    padding:20px;
 
     text-align:center;
 
@@ -288,9 +296,9 @@ ESTATÍSTICAS
 
 .estatisticas h2{
 
-    color:var(--roxo);
+    color:var(--roxoHover);
 
-    font-size:32px;
+    font-size:28px;
 
 }
 
@@ -300,9 +308,9 @@ ESTATÍSTICAS
 
 }
 
-/* ===================================
+/* ==========================================
 TOP FAVORITOS
-=================================== */
+========================================== */
 
 .tops{
 
@@ -310,11 +318,23 @@ TOP FAVORITOS
 
 }
 
-.tops h2{
+.titulo-top{
 
-    margin-bottom:25px;
+    margin-bottom:22px;
+
+}
+
+.titulo-top h2{
 
     font-size:28px;
+
+}
+
+.titulo-top p{
+
+    color:var(--texto2);
+
+    margin-top:6px;
 
 }
 
@@ -324,7 +344,7 @@ TOP FAVORITOS
 
     grid-template-columns:repeat(4,1fr);
 
-    gap:20px;
+    gap:22px;
 
 }
 
@@ -332,15 +352,17 @@ TOP FAVORITOS
 
     background:var(--card);
 
-    border-radius:22px;
+    border-radius:20px;
 
-    padding:20px;
+    overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.05);
+    position:relative;
+
+    cursor:pointer;
 
     transition:.35s;
 
-    cursor:pointer;
+    border:1px solid rgba(255,255,255,.06);
 
 }
 
@@ -348,17 +370,51 @@ TOP FAVORITOS
 
     transform:translateY(-8px);
 
-    background:#2d2140;
+}
+
+.top-card img{
+
+    width:100%;
+
+    aspect-ratio:2/3;
+
+    object-fit:cover;
+
+    display:block;
 
 }
 
-.top-capa{
+.top-card small{
 
-    height:170px;
+    display:block;
 
-    border-radius:18px;
+    padding:12px 15px 4px;
 
-    background:#2d2339;
+    color:var(--texto2);
+
+    font-size:13px;
+
+}
+
+.top-card span{
+
+    display:block;
+
+    padding:0 15px 16px;
+
+    font-weight:600;
+
+    line-height:1.5;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.60);
 
     display:flex;
 
@@ -366,39 +422,28 @@ TOP FAVORITOS
 
     align-items:center;
 
-    font-size:45px;
+    font-size:20px;
 
-    color:var(--roxo);
+    font-weight:700;
 
-    margin-bottom:18px;
+    opacity:0;
 
-}
-
-.top-card h3{
-
-    margin-bottom:8px;
-
-    color:white;
+    transition:.35s;
 
 }
 
-.top-card p{
+.top-card:hover .overlay{
 
-    color:var(--texto2);
-
-    font-size:14px;
-
-    line-height:1.5;
+    opacity:1;
 
 }
-
-/* ===================================
+/* ==========================================
 PUBLICAÇÕES
-=================================== */
+========================================== */
 
 .publicacoes{
 
-    margin-top:60px;
+    margin-top:55px;
 
 }
 
@@ -416,31 +461,31 @@ PUBLICAÇÕES
 
 .titulo-publicacoes h2{
 
-    font-size:30px;
-
-    color:var(--texto);
+    font-size:28px;
 
 }
 
-/* ===================================
-BOTÃO NOVA PUBLICAÇÃO
-=================================== */
+.titulo-publicacoes p{
+
+    color:var(--texto2);
+
+    margin-top:5px;
+
+}
 
 .btn-publicacao{
 
     border:none;
 
-    background:linear-gradient(45deg,#8c5cf6,#bb8eff);
+    background:linear-gradient(45deg,#8b5cf6,#bb8eff);
 
     color:white;
 
     padding:14px 28px;
 
-    border-radius:40px;
+    border-radius:50px;
 
     cursor:pointer;
-
-    font-size:15px;
 
     font-weight:600;
 
@@ -450,15 +495,53 @@ BOTÃO NOVA PUBLICAÇÃO
 
 .btn-publicacao:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 
-    box-shadow:0 15px 35px rgba(163,112,247,.35);
+    box-shadow:0 12px 30px rgba(163,112,247,.35);
 
 }
 
-/* ===================================
-LISTA DE POSTS
-=================================== */
+/* ==========================================
+SEM PUBLICAÇÃO
+========================================== */
+
+.sem-post{
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:22px;
+
+    padding:70px;
+
+    text-align:center;
+
+    color:var(--texto2);
+
+}
+
+.sem-post i{
+
+    font-size:60px;
+
+    color:var(--roxo);
+
+    margin-bottom:18px;
+
+}
+
+.sem-post h3{
+
+    color:white;
+
+    margin-bottom:12px;
+
+}
+
+/* ==========================================
+CARDS DAS PUBLICAÇÕES
+========================================== */
 
 #listaPosts{
 
@@ -470,37 +553,21 @@ LISTA DE POSTS
 
 }
 
-/* ===================================
-CARD DO POST
-=================================== */
-
 .post{
 
     background:var(--card);
 
-    border-radius:24px;
-
-    padding:25px;
-
-    border:1px solid rgba(255,255,255,.05);
-
-    transition:.35s;
+    border-radius:22px;
 
     overflow:hidden;
 
-}
+    border:1px solid rgba(255,255,255,.06);
 
-.post:hover{
+    animation:aparecer .35s;
 
-    transform:translateY(-6px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.35);
+    position:relative;
 
 }
-
-/* ===================================
-TOPO DO POST
-=================================== */
 
 .post-topo{
 
@@ -510,7 +577,7 @@ TOPO DO POST
 
     align-items:center;
 
-    margin-bottom:18px;
+    padding:18px 22px;
 
 }
 
@@ -524,15 +591,15 @@ TOPO DO POST
 
 }
 
-.usuario-post .foto-mini{
+.usuario-post .avatar{
 
-    width:45px;
+    width:48px;
 
-    height:45px;
+    height:48px;
 
     border-radius:50%;
 
-    background:linear-gradient(45deg,#8c5cf6,#bb8eff);
+    background:linear-gradient(45deg,#8b5cf6,#bb8eff);
 
     display:flex;
 
@@ -540,9 +607,9 @@ TOPO DO POST
 
     align-items:center;
 
-    font-weight:bold;
-
     color:white;
+
+    font-weight:700;
 
 }
 
@@ -550,207 +617,135 @@ TOPO DO POST
 
     color:white;
 
-    font-size:16px;
-
 }
 
 .usuario-post span{
 
     color:var(--texto2);
 
-    font-size:13px;
+    font-size:14px;
 
 }
 
-/* ===================================
-MENU DO POST
-=================================== */
-
-.menu-post{
-
-    cursor:pointer;
-
-    color:var(--texto2);
-
-    font-size:22px;
-
-    transition:.3s;
-
-}
-
-.menu-post:hover{
-
-    color:var(--roxo);
-
-}
-
-/* ===================================
-IMAGEM DO POST
-=================================== */
+/* ==========================================
+FOTO
+========================================== */
 
 .post img{
 
     width:100%;
 
-    border-radius:18px;
+    max-height:700px;
 
-    margin-top:15px;
+    object-fit:contain;
 
-    margin-bottom:18px;
-
-    object-fit:cover;
-
-    max-height:520px;
+    background:black;
 
 }
 
-/* ===================================
+/* ==========================================
 LEGENDA
-=================================== */
+========================================== */
 
-.legenda{
-
-    color:var(--texto);
-
-    line-height:1.8;
-
-    margin-top:10px;
-
-}
-
-/* ===================================
-PENSAMENTO
-=================================== */
-
-.pensamento{
-
-    background:#2a2037;
-
-    border-left:5px solid var(--roxo);
-
-    border-radius:15px;
+.post-legenda{
 
     padding:20px;
 
-    color:var(--texto);
-
-    line-height:1.9;
-
-    font-size:17px;
+    line-height:1.7;
 
 }
 
-/* ===================================
-AÇÕES DO POST
-=================================== */
+.post-legenda p{
 
-.acoes-post{
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    margin-top:20px;
+    color:#ececec;
 
 }
 
-/* ===================================
-BOTÃO APAGAR
-=================================== */
+/* ==========================================
+PENSAMENTO
+========================================== */
 
-.btn-apagar{
+.post-pensamento{
 
-    background:#ff4d6d;
+    padding:35px;
 
-    color:white;
+    font-size:20px;
 
-    border:none;
+    line-height:1.8;
 
-    padding:10px 18px;
+    font-style:italic;
 
-    border-radius:12px;
+}
+
+/* ==========================================
+MENU EXCLUIR
+========================================== */
+
+.menu{
 
     cursor:pointer;
 
-    font-weight:600;
+    font-size:22px;
+
+    color:var(--texto2);
 
     transition:.3s;
 
 }
 
-.btn-apagar:hover{
+.menu:hover{
 
-    background:#ff2d55;
-
-    transform:scale(1.05);
+    color:white;
 
 }
 
-/* ===================================
-SEM POSTS
-=================================== */
+.menu-post{
 
-.sem-post{
+    position:absolute;
 
-    background:var(--card);
+    background:#23182f;
 
-    border-radius:25px;
+    border-radius:14px;
 
-    padding:60px;
+    padding:10px;
 
-    text-align:center;
+    display:none;
 
-    border:2px dashed rgba(255,255,255,.08);
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 
-}
-
-.sem-post i{
-
-    font-size:70px;
-
-    color:var(--roxo);
-
-    margin-bottom:20px;
+    z-index:1000;
 
 }
 
-.sem-post h3{
+.menu-post button{
 
-    margin-bottom:12px;
+    background:none;
 
-    font-size:26px;
+    border:none;
+
+    color:#ff7f7f;
+
+    cursor:pointer;
+
+    padding:10px 14px;
+
+    font-size:15px;
+
+    width:100%;
+
+    text-align:left;
 
 }
 
-.sem-post p{
-
-    color:var(--texto2);
-
-    max-width:500px;
-
-    margin:auto;
-
-    line-height:1.8;
-
-}
-/* ===================================
+/* ==========================================
 MODAIS
-=================================== */
+========================================== */
 
-.modal,
 .modal-post{
 
     position:fixed;
 
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,.65);
-
-    backdrop-filter:blur(8px);
+    inset:0;
 
     display:none;
 
@@ -758,180 +753,369 @@ MODAIS
 
     align-items:center;
 
-    z-index:9999;
+    background:rgba(0,0,0,.70);
+
+    backdrop-filter:blur(6px);
+
+    z-index:999;
 
 }
 
-.modal.ativo,
-.modal-post.ativo{
-
-    display:flex;
-
-    animation:fade .35s;
-
-}
-
-.modal-content,
 .modal-box{
 
-    width:500px;
+    width:520px;
 
     max-width:92%;
 
-    background:var(--card);
+    background:#1d1628;
 
-    border-radius:24px;
+    border-radius:25px;
 
     padding:35px;
 
-    border:1px solid rgba(255,255,255,.06);
+    position:relative;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.45);
+    animation:aparecer .25s;
 
 }
 
-.modal-content h2,
 .modal-box h2{
+
+    margin-bottom:12px;
+
+}
+
+.modal-box p{
+
+    color:var(--texto2);
 
     margin-bottom:25px;
 
-    text-align:center;
+}
+
+.fechar-modal{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#2d213c;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
 
 }
 
-.modal-content input,
-.modal-content textarea,
+.fechar-modal:hover{
+
+    background:var(--roxo);
+
+}
+
 .modal-box input,
 .modal-box textarea{
 
     width:100%;
 
-    background:#2d2339;
+    margin-bottom:18px;
 
-    color:white;
-
-    border:none;
+    padding:14px;
 
     border-radius:14px;
 
-    padding:14px;
-
-    margin-bottom:16px;
-
-    font-size:15px;
-
-    resize:none;
+    border:none;
 
     outline:none;
 
-    transition:.3s;
-
-}
-
-.modal-content input:focus,
-.modal-content textarea:focus,
-.modal-box input:focus,
-.modal-box textarea:focus{
-
-    box-shadow:0 0 0 2px var(--roxo);
-
-}
-
-/* ===================================
-BOTÕES DOS MODAIS
-=================================== */
-
-.modal-botoes{
-
-    display:flex;
-
-    gap:15px;
-
-    margin-top:10px;
-
-}
-
-.modal-botoes button{
-
-    flex:1;
-
-}
-
-#salvar,
-.btn-publicar,
-.tipo-post{
-
-    border:none;
-
-    background:linear-gradient(45deg,#8c5cf6,#bb8eff);
+    background:#2a2036;
 
     color:white;
 
-    padding:14px;
+    font-size:15px;
+
+}
+
+.modal-box textarea{
+
+    resize:none;
+
+    min-height:120px;
+
+}
+
+.btn-publicar{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
 
     border-radius:40px;
 
-    cursor:pointer;
+    background:linear-gradient(45deg,#8b5cf6,#bb8eff);
+
+    color:white;
 
     font-weight:600;
 
-    transition:.3s;
-
-    width:100%;
-
-    margin-bottom:10px;
-
-}
-
-#salvar:hover,
-.btn-publicar:hover,
-.tipo-post:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:0 15px 30px rgba(163,112,247,.35);
-
-}
-
-#cancelar,
-.cancelar{
-
-    border:none;
-
-    background:#2d2339;
-
-    color:white;
-
-    padding:14px;
-
-    border-radius:40px;
-
     cursor:pointer;
 
     transition:.3s;
 
+}
+
+.btn-publicar:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+PREVIEW DA FOTO
+========================================== */
+
+.preview-imagem{
+
+    width:100%;
+
+    height:380px;
+
+    background:#120c17;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+}
+
+.preview-imagem img{
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    transition:.2s;
+
+}
+
+.controle-zoom{
+
+    margin-bottom:20px;
+
+}
+
+.controle-zoom label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:var(--texto2);
+
+}
+
+.controle-zoom input{
+
     width:100%;
 
 }
+/* ==========================================
+MODAL TOP FAVORITOS
+========================================== */
 
-#cancelar:hover,
-.cancelar:hover{
+.modal-top{
 
-    background:#3b2b50;
+    max-height:80vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
 
 }
 
-/* ===================================
-ANIMAÇÕES
-=================================== */
+#pesquisaTop{
 
-@keyframes fade{
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#2a2036;
+
+    color:white;
+
+    margin:18px 0;
+
+    font-size:15px;
+
+}
+
+#listaResultados{
+
+    overflow-y:auto;
+
+    max-height:420px;
+
+    padding-right:5px;
+
+}
+
+#listaResultados::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+#listaResultados::-webkit-scrollbar-thumb{
+
+    background:#8b5cf6;
+
+    border-radius:20px;
+
+}
+
+.resultado{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    margin-bottom:8px;
+
+}
+
+.resultado:hover{
+
+    background:#2f2341;
+
+}
+
+.resultado img{
+
+    width:60px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.resultado h4{
+
+    color:white;
+
+    margin-bottom:4px;
+
+}
+
+.resultado span{
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+/* ==========================================
+TIPOS DE POST
+========================================== */
+
+.tipo-post{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#2a2036;
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-bottom:14px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.tipo-post:hover{
+
+    background:var(--roxo);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+EDITAR PERFIL
+========================================== */
+
+#salvar{
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+ANIMAÇÕES
+========================================== */
+
+@keyframes aparecer{
 
     from{
 
         opacity:0;
 
-        transform:translateY(20px);
+        transform:translateY(25px);
 
     }
 
@@ -945,71 +1129,33 @@ ANIMAÇÕES
 
 }
 
-/* ===================================
-SCROLLBAR
-=================================== */
+@keyframes fade{
 
-::-webkit-scrollbar{
+    from{
 
-    width:10px;
+        opacity:0;
 
-}
+    }
 
-::-webkit-scrollbar-track{
+    to{
 
-    background:#130d1b;
+        opacity:1;
 
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:var(--roxo);
-
-    border-radius:20px;
+    }
 
 }
 
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--roxoHover);
-
-}
-
-/* ===================================
-HOVERS
-=================================== */
-
-button{
-
-    transition:.3s;
-
-}
-
-button:hover{
-
-    transform:translateY(-2px);
-
-}
-
-input,
-textarea{
-
-    transition:.3s;
-
-}
-
-input:focus,
-textarea:focus{
-
-    border-color:var(--roxo);
-
-}
-
-/* ===================================
+/* ==========================================
 RESPONSIVO
-=================================== */
+========================================== */
 
 @media(max-width:900px){
+
+.tops-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
 
 .perfil-topo{
 
@@ -1021,27 +1167,13 @@ RESPONSIVO
 
 .estatisticas{
 
-    grid-template-columns:1fr;
-
-}
-
-.tops-grid{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-.titulo-publicacoes{
-
-    flex-direction:column;
-
     gap:20px;
 
 }
 
 }
 
-@media(max-width:600px){
+@media(max-width:700px){
 
 header{
 
@@ -1061,13 +1193,47 @@ nav{
 
 }
 
+.titulo-publicacoes{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.modal-box{
+
+    width:95%;
+
+    padding:28px;
+
+}
+
+.preview-imagem{
+
+    height:260px;
+
+}
+
+}
+
+@media(max-width:520px){
+
+.tops-grid{
+
+    grid-template-columns:1fr;
+
+}
+
 .foto{
 
-    width:95px;
+    width:100px;
 
-    height:95px;
+    height:100px;
 
-    font-size:34px;
+    font-size:42px;
 
 }
 
@@ -1077,16 +1243,9 @@ nav{
 
 }
 
-.tops-grid{
+.post img{
 
-    grid-template-columns:1fr;
-
-}
-
-.modal-content,
-.modal-box{
-
-    padding:25px;
+    max-height:400px;
 
 }
 
@@ -1097,74 +1256,519 @@ nav{
 }
 
 }
-/* ===========================
-TOPS
-=========================== */
+/* ==========================================
+MODAL TOP FAVORITOS
+========================================== */
 
-.tops{
+.modal-top{
 
-    margin-top:40px;
+    max-height:80vh;
 
-}
+    overflow:hidden;
 
-.tops h2{
+    display:flex;
 
-    margin-bottom:20px;
-
-}
-
-.tops-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:18px;
+    flex-direction:column;
 
 }
 
-.top-card{
+#pesquisaTop{
 
-    background:#22192f;
-
-    border-radius:18px;
+    width:100%;
 
     padding:15px;
 
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#2a2036;
+
+    color:white;
+
+    margin:18px 0;
+
+    font-size:15px;
+
+}
+
+#listaResultados{
+
+    overflow-y:auto;
+
+    max-height:420px;
+
+    padding-right:5px;
+
+}
+
+#listaResultados::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+#listaResultados::-webkit-scrollbar-thumb{
+
+    background:#8b5cf6;
+
+    border-radius:20px;
+
+}
+
+.resultado{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:14px;
+
+    border-radius:14px;
+
     cursor:pointer;
 
+    transition:.25s;
+
+    margin-bottom:8px;
+
+}
+
+.resultado:hover{
+
+    background:#2f2341;
+
+}
+
+.resultado img{
+
+    width:60px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.resultado h4{
+
+    color:white;
+
+    margin-bottom:4px;
+
+}
+
+.resultado span{
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+/* ==========================================
+TIPOS DE POST
+========================================== */
+
+.tipo-post{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#2a2036;
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-bottom:14px;
+
     transition:.3s;
+
+    font-size:15px;
+
+}
+
+.tipo-post:hover{
+
+    background:var(--roxo);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+EDITAR PERFIL
+========================================== */
+
+#salvar{
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+ANIMAÇÕES
+========================================== */
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ==========================================
+MODAL TOP FAVORITOS
+========================================== */
+
+.modal-top{
+
+    max-height:80vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#pesquisaTop{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:#2a2036;
+
+    color:white;
+
+    margin:18px 0;
+
+    font-size:15px;
+
+}
+
+#listaResultados{
+
+    overflow-y:auto;
+
+    max-height:420px;
+
+    padding-right:5px;
+
+}
+
+#listaResultados::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+#listaResultados::-webkit-scrollbar-thumb{
+
+    background:#8b5cf6;
+
+    border-radius:20px;
+
+}
+
+.resultado{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    margin-bottom:8px;
+
+}
+
+.resultado:hover{
+
+    background:#2f2341;
+
+}
+
+.resultado img{
+
+    width:60px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+.resultado h4{
+
+    color:white;
+
+    margin-bottom:4px;
+
+}
+
+.resultado span{
+
+    color:var(--texto2);
+
+    font-size:14px;
+
+}
+
+/* ==========================================
+TIPOS DE POST
+========================================== */
+
+.tipo-post{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#2a2036;
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-bottom:14px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.tipo-post:hover{
+
+    background:var(--roxo);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+EDITAR PERFIL
+========================================== */
+
+#salvar{
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+ANIMAÇÕES
+========================================== */
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================================
+RESPONSIVO
+========================================== */
+
+@media(max-width:900px){
+
+.tops-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.perfil-topo{
+
+    flex-direction:column;
 
     text-align:center;
 
 }
 
-.top-card:hover{
+.estatisticas{
 
-    transform:translateY(-6px);
+    gap:20px;
 
 }
 
-.top-card img{
+}
+
+@media(max-width:700px){
+
+header{
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+nav{
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.titulo-publicacoes{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.modal-box{
+
+    width:95%;
+
+    padding:28px;
+
+}
+
+.preview-imagem{
+
+    height:260px;
+
+}
+
+}
+
+@media(max-width:520px){
+
+.tops-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.foto{
+
+    width:100px;
+
+    height:100px;
+
+    font-size:42px;
+
+}
+
+.dados h1{
+
+    font-size:28px;
+
+}
+
+.post img{
+
+    max-height:400px;
+
+}
+
+.btn-publicacao{
 
     width:100%;
 
-    aspect-ratio:2/3;
-
-    object-fit:cover;
-
-    border-radius:12px;
-
-    margin-bottom:10px;
-
 }
-
-.top-card span{
-
-    display:block;
-
-    color:white;
-
-    font-size:14px;
 
 }
