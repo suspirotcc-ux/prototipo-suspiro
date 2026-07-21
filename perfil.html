@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="perfil.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,27 +19,23 @@
 
 </head>
 
-
 <body>
-
 
 <div class="background-circle circle1"></div>
 <div class="background-circle circle2"></div>
 
-
 <header>
 
     <div class="logo">
-        Suspiro
-    </div>
 
+        Suspiro
+
+    </div>
 
     <nav>
 
         <a href="#">Início</a>
-
         <a href="#">Comunidade</a>
-
         <a href="#">Explorar</a>
 
         <a href="#">
@@ -51,207 +46,235 @@
 
 </header>
 
-
-
 <main>
 
+<!-- ===========================
+PERFIL
+=========================== -->
 
 <section class="perfil-card">
 
+    <div class="perfil-topo">
 
-<div class="perfil-topo">
+        <div class="foto">
 
+            <span id="inicial">V</span>
 
-<div class="foto">
+        </div>
 
-<span id="inicial">
-V
-</span>
+        <div class="dados">
 
-</div>
+            <h1 id="nomeUsuario">
 
+                Vitória Letícia
 
+            </h1>
 
-<div class="dados">
+            <p id="arroba">
 
+                @vitorialeticia
 
-<h1 id="nomeUsuario">
-Vitória Letícia
-</h1>
+            </p>
 
+            <p id="bio">
 
-<p id="arroba">
-@vitorialeticia
-</p>
+                Ainda escrevendo minha primeira história no Suspiro. 💜
 
+            </p>
 
-<p id="bio">
-Ainda escrevendo minha primeira história no Suspiro. 💜
-</p>
+            <button id="editarPerfil">
 
+                <i class="fa-solid fa-pen"></i>
 
+                Editar Perfil
 
-<button id="editarPerfil">
+            </button>
 
-<i class="fa-solid fa-pen"></i>
+        </div>
 
-Editar Perfil
+    </div>
 
-</button>
+    <div class="estatisticas">
 
+        <div>
 
-</div>
+            <h2 id="posts">
 
+                0
 
-</div>
+            </h2>
 
+            <span>Posts</span>
 
+        </div>
 
-<div class="estatisticas">
+        <div>
 
+            <h2>0</h2>
 
-<div>
+            <span>Seguidores</span>
 
-<h2 id="posts">
-0
-</h2>
+        </div>
 
-<span>
-Posts
-</span>
+        <div>
 
-</div>
+            <h2>0</h2>
 
+            <span>Seguindo</span>
 
+        </div>
 
-<div>
-
-<h2>
-0
-</h2>
-
-<span>
-Seguidores
-</span>
-
-</div>
-
-
-
-<div>
-
-<h2>
-0
-</h2>
-
-<span>
-Seguindo
-</span>
-
-</div>
-
-
-</div>
-
+    </div>
 
 </section>
 
-
-
-
-
 <!-- ===========================
-TOPS FAVORITOS
+TOP FAVORITOS
 =========================== -->
-
 
 <section class="tops">
 
+    <div class="titulo-top">
 
-<h2>
-⭐ Meus Favoritos
-</h2>
+        <h2>
 
+            ⭐ Meus Favoritos
 
+        </h2>
 
-<div class="tops-grid">
+        <p>
 
+            Clique em qualquer capa para alterar seus favoritos.
 
+        </p>
 
-<div class="top-card" onclick="abrirModal('filme')">
+    </div>
 
+    <div class="tops-grid">
 
-<img 
-id="capaFilme"
-src="assets/capas/placeholder.png">
+        <!-- FILME -->
 
+        <div
+        class="top-card"
+        onclick="abrirModal('filme')">
 
-<span id="nomeFilme">
-Escolher Filme
-</span>
+            <div class="overlay">
 
+                Alterar
 
-</div>
+            </div>
 
+            <img
+            id="capaFilme"
+            src="assets/capas/placeholder.png">
 
+            <small>
 
+                🎬 Filme
 
-<div class="top-card" onclick="abrirModal('livro')">
+            </small>
 
+            <span id="nomeFilme">
 
-<img 
-id="capaLivro"
-src="assets/capas/placeholder.png">
+                Escolher Filme
 
+            </span>
 
-<span id="nomeLivro">
-Escolher Livro
-</span>
+        </div>
 
+        <!-- LIVRO -->
 
-</div>
+        <div
+        class="top-card"
+        onclick="abrirModal('livro')">
 
+            <div class="overlay">
 
+                Alterar
 
+            </div>
 
+            <img
+            id="capaLivro"
+            src="assets/capas/placeholder.png">
 
-<div class="top-card" onclick="abrirModal('jogo')">
+            <small>
 
+                📚 Livro
 
-<img 
-id="capaJogo"
-src="assets/capas/placeholder.png">
+            </small>
 
+            <span id="nomeLivro">
 
-<span id="nomeJogo">
-Escolher Jogo
-</span>
+                Escolher Livro
 
+            </span>
 
-</div>
+        </div>
 
+        <!-- JOGO -->
 
+        <div
+        class="top-card"
+        onclick="abrirModal('jogo')">
 
+            <div class="overlay">
 
+                Alterar
 
-<div class="top-card" onclick="abrirModal('musica')">
+            </div>
 
+            <img
+            id="capaJogo"
+            src="assets/capas/placeholder.png">
 
-<img 
-id="capaMusica"
-src="assets/capas/placeholder.png">
+            <small>
 
+                🎮 Jogo
 
-<span id="nomeMusica">
-Escolher Música
-</span>
+            </small>
 
+            <span id="nomeJogo">
 
-</div>
+                Escolher Jogo
 
+            </span>
 
+        </div>
 
-</div>
+        <!-- MUSICA -->
+
+        <div
+        class="top-card"
+        onclick="abrirModal('musica')">
+
+            <div class="overlay">
+
+                Alterar
+
+            </div>
+
+            <img
+            id="capaMusica"
+            src="assets/capas/placeholder.png">
+
+            <small>
+
+                🎵 Música
+
+            </small>
+
+            <span id="nomeMusica">
+
+                Escolher Música
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- ===========================
 PUBLICAÇÕES
 =========================== -->
@@ -260,99 +283,106 @@ PUBLICAÇÕES
 
     <div class="titulo-publicacoes">
 
-        <h2>
-            Minhas Publicações
-        </h2>
+        <div>
 
-        <button id="novoPost" class="btn-publicacao">
-            + Nova publicação
+            <h2>
+
+                📝 Minhas Publicações
+
+            </h2>
+
+            <p>
+
+                Compartilhe fotos ou pensamentos com a comunidade.
+
+            </p>
+
+        </div>
+
+        <button
+        id="novoPost"
+        class="btn-publicacao">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Nova publicação
+
         </button>
 
     </div>
 
-    <div id="listaPosts"></div>
+    <div id="listaPosts">
 
-    <div class="sem-post" id="semPost">
+        <!-- POSTS APARECEM AQUI -->
+
+    </div>
+
+    <div
+    class="sem-post"
+    id="semPost">
 
         <i class="fa-regular fa-image"></i>
 
         <h3>
-            Nenhuma publicação ainda
+
+            Ainda não há publicações
+
         </h3>
 
         <p>
-            Compartilhe seu primeiro momento e inspire outras pessoas.
+
+            Compartilhe seu primeiro momento no Suspiro.
+
         </p>
 
     </div>
 
 </section>
 
-</main>
-
 <!-- ===========================
-MODAL EDITAR PERFIL
+MODAL NOVA PUBLICAÇÃO
 =========================== -->
 
-<div class="modal" id="modal">
-
-    <div class="modal-content">
-
-        <h2>Editar Perfil</h2>
-
-        <input
-            type="text"
-            id="novoNome"
-            placeholder="Seu nome">
-
-        <input
-            type="text"
-            id="novoUsuario"
-            placeholder="@usuario">
-
-        <textarea
-            id="novaBio"
-            rows="4"
-            placeholder="Escreva sua bio..."></textarea>
-
-        <div class="modal-botoes">
-
-            <button id="salvar">
-                Salvar
-            </button>
-
-            <button id="cancelar">
-                Cancelar
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ===========================
-MODAL ESCOLHER TIPO DE POST
-=========================== -->
-
-<div class="modal-post" id="modalPost">
+<div
+class="modal-post"
+id="modalPost">
 
     <div class="modal-box">
 
-        <h2>Nova publicação</h2>
+        <button
+        class="fechar-modal"
+        id="fecharModal">
 
-        <p>Como deseja compartilhar hoje?</p>
+            <i class="fa-solid fa-xmark"></i>
 
-        <button id="btnFoto" class="tipo-post">
-            📷 Publicar uma foto
         </button>
 
-        <button id="btnPensamento" class="tipo-post">
-            💭 Compartilhar um pensamento
+        <h2>
+
+            Nova publicação
+
+        </h2>
+
+        <p>
+
+            Como deseja compartilhar hoje?
+
+        </p>
+
+        <button
+        id="btnFoto"
+        class="tipo-post">
+
+            📷 Publicar Foto
+
         </button>
 
-        <button id="fecharModal" class="cancelar">
-            Cancelar
+        <button
+        id="btnPensamento"
+        class="tipo-post">
+
+            💭 Compartilhar Pensamento
+
         </button>
 
     </div>
@@ -363,24 +393,74 @@ MODAL ESCOLHER TIPO DE POST
 MODAL FOTO
 =========================== -->
 
-<div class="modal-post" id="modalFoto">
+<div
+class="modal-post"
+id="modalFoto">
 
-    <div class="modal-box">
-
-        <h2>Publicar Foto</h2>
-
-        <input
-            type="file"
-            id="imagemPost"
-            accept="image/*">
-
-        <textarea
-            id="legendaPost"
-            placeholder="Escreva uma legenda..."></textarea>
+    <div class="modal-box modal-foto">
 
         <button
-            id="publicarFoto"
-            class="btn-publicar">
+        class="fechar-modal"
+        id="fecharFoto">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <h2>
+
+            Publicar Foto
+
+        </h2>
+
+        <input
+        type="file"
+        id="imagemPost"
+        accept="image/*">
+
+        <!-- PREVIEW -->
+
+        <div class="preview-imagem">
+
+            <img
+            id="previewImagem"
+            src="">
+
+        </div>
+
+        <!-- ZOOM -->
+
+        <div class="controle-zoom">
+
+            <label>
+
+                Zoom
+
+            </label>
+
+            <input
+            type="range"
+            id="zoomImagem"
+            min="1"
+            max="2.5"
+            step="0.1"
+            value="1">
+
+        </div>
+
+        <textarea
+
+        id="legendaPost"
+
+        placeholder="Escreva uma legenda...">
+
+        </textarea>
+
+        <button
+
+        id="publicarFoto"
+
+        class="btn-publicar">
 
             Publicar
 
@@ -394,32 +474,126 @@ MODAL FOTO
 MODAL PENSAMENTO
 =========================== -->
 
-<div class="modal-post" id="modalPensamento">
+<div
+class="modal-post"
+id="modalPensamento">
 
     <div class="modal-box">
 
+        <button
+        class="fechar-modal"
+        id="fecharPensamento">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
         <h2>
-            Compartilhar pensamento 💭
+
+            Compartilhar pensamento
+
         </h2>
 
         <textarea
-            id="textoPensamento"
-            rows="6"
-            placeholder="O que você está pensando hoje?"></textarea>
+
+        id="textoPensamento"
+
+        placeholder="O que você está pensando hoje?">
+
+        </textarea>
 
         <button
-            id="publicarPensamento"
-            class="btn-publicar">
+
+        id="publicarPensamento"
+
+        class="btn-publicar">
 
             Publicar
 
         </button>
 
-        <button
-            id="fecharPensamento"
-            class="cancelar">
+    </div>
 
-            Cancelar
+</div>
+<!-- ===========================
+MODAL FAVORITOS
+=========================== -->
+
+<div class="modal-post" id="modalTop">
+
+    <div class="modal-box modal-top">
+
+        <button
+        class="fechar-modal"
+        id="fecharTop">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <h2 id="tituloModal">
+
+            Escolher Favorito
+
+        </h2>
+
+        <input
+        type="text"
+        id="pesquisaTop"
+        placeholder="Pesquisar...">
+
+        <div id="listaResultados">
+
+            <!-- Resultados aparecem aqui -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+MODAL EDITAR PERFIL
+=========================== -->
+
+<div class="modal-post" id="modalEditar">
+
+    <div class="modal-box">
+
+        <button
+        class="fechar-modal"
+        id="fecharEditar">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <h2>
+
+            Editar Perfil
+
+        </h2>
+
+        <input
+        type="text"
+        id="novoNome"
+        placeholder="Seu nome">
+
+        <input
+        type="text"
+        id="novoUsuario"
+        placeholder="@usuario">
+
+        <textarea
+        id="novaBio"
+        rows="4"
+        placeholder="Escreva sua bio..."></textarea>
+
+        <button
+        id="salvar"
+        class="btn-publicar">
+
+            Salvar Alterações
 
         </button>
 
@@ -428,38 +602,35 @@ MODAL PENSAMENTO
 </div>
 
 <!-- ===========================
-MODAL TOPS
+MENU EXCLUIR PUBLICAÇÃO
 =========================== -->
 
-<div class="modal" id="modalTop">
+<div
+id="menuPost"
 
-    <div class="modal-content">
+class="menu-post">
 
-        <h2 id="tituloModal">
-            Escolher
-        </h2>
+    <button id="excluirPost">
 
-        <input
-            type="text"
-            id="pesquisaTop"
-            placeholder="Pesquisar...">
+        <i class="fa-solid fa-trash"></i>
 
-        <div id="listaResultados"></div>
+        Excluir publicação
 
-        <button id="fecharTop">
-            Fechar
-        </button>
-
-    </div>
+    </button>
 
 </div>
 
-</section>
-    <script src="filmes.js"></script>
+<!-- ===========================
+SCRIPTS
+=========================== -->
+
+<script src="filmes.js"></script>
 <script src="livros.js"></script>
 <script src="jogos.js"></script>
 <script src="musicas.js"></script>
+
 <script src="tops.js"></script>
+
 <script src="perfil.js"></script>
 
 </body>
