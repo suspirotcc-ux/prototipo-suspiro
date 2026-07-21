@@ -135,15 +135,11 @@
 
 </div>
 
-<!-- ===========================
-TOP FAVORITOS
-=========================== -->
-
 
 <!-- ===========================
 TOPS FAVORITOS
 =========================== -->
-
+<div class="modal" id="modalTop">
 <section class="tops">
 
     <h2>⭐ Meus Favoritos</h2>
@@ -363,30 +359,42 @@ MODAL FOTO
 MODAL PENSAMENTO
 =========================== -->
 
-<div class="modal-post" id="modalPensamento">
+    <div class="modal-post" id="modalPensamento">
 
     <div class="modal-box">
 
         <h2>
-            Compartilhar pensamento
+            Compartilhar pensamento 💭
         </h2>
 
         <textarea 
-        id="textoPensamento"
-        placeholder="O que você está sentindo hoje? 💭"></textarea>
+            id="textoPensamento"
+            rows="6"
+            placeholder="O que você está sentindo hoje?">
+        </textarea>
 
 
         <button 
-        id="publicarPensamento"
-        class="btn-publicar">
+            id="publicarPensamento"
+            class="btn-publicar">
 
-            Publicar
+            Publicar pensamento
+
+        </button>
+
+
+        <button 
+            id="fecharPensamento"
+            class="cancelar">
+
+            Cancelar
 
         </button>
 
     </div>
 
 </div>
+
 <script src="filmes.js"></script>
 <script src="livros.js"></script>
 <script src="jogos.js"></script>
