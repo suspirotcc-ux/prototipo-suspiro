@@ -32,34 +32,70 @@ pesquisa.onkeyup=()=>{
 
 function mostrarLista(texto){
 
-    resultados.innerHTML="";
+    resultados.innerHTML = "";
 
-    let lista=[];
+    let lista = [];
 
-    if(categoriaAtual==="filme") lista=filmes;
-
-    if(categoriaAtual==="livro") lista=livros;
-
-    if(categoriaAtual==="jogo") lista=jogos;
-
-    if(categoriaAtual==="musica") lista=musicas;
+    if(categoriaAtual === "filme") lista = filmes;
+    if(categoriaAtual === "livro") lista = livros;
+    if(categoriaAtual === "jogo") lista = jogos;
+    if(categoriaAtual === "musica") lista = musicas;
 
     lista
+    .filter(item => item.nome.toLowerCase().includes(texto.toLowerCase()))
+    .forEach(item => {
 
-    .filter(item=>item.nome.toLowerCase().includes(texto.toLowerCase()))
+        const div = document.createElement("div");
 
-    .forEach(item=>{
+        div.className = "resultado";
 
-        resultados.innerHTML+=`
+        div.innerHTML = item.nome;
 
-        <div class="resultado">
+        div.onclick = function(){
 
-            ${item.nome}
+            selecionarTop(item);
 
-        </div>
+        };
 
-        `;
+        function selecionarTop(item){
+
+    const nome = document.getElementById("nome" + primeiraMaiuscula(categoriaAtual));
+    const capa = document.getElementById("capa" + primeiraMaiuscula(categoriaAtual));
+
+    nome.textContent = item.nome;
+
+    capa.src = item.capa;
+
+    localStorage.setItem(categoriaAtual, JSON.stringify(item));
+
+    modalTop.style.display = "none";
+
+}
+
+        resultados.appendChild(div);
 
     });
+
+    function primeiraMaiuscula(texto){
+
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+
+}
+
+    ["filme","livro","jogo","musica"].forEach(tipo=>{
+
+    const salvo = localStorage.getItem(tipo);
+
+    if(salvo){
+
+        const item = JSON.parse(salvo);
+
+        document.getElementById("nome" + primeiraMaiuscula(tipo)).textContent = item.nome;
+
+        document.getElementById("capa" + primeiraMaiuscula(tipo)).src = item.capa;
+
+    }
+
+});
 
 }
