@@ -20,18 +20,20 @@
 
 </head>
 
+
 <body>
+
 
 <div class="background-circle circle1"></div>
 <div class="background-circle circle2"></div>
 
+
 <header>
 
     <div class="logo">
-
         Suspiro
-
     </div>
+
 
     <nav>
 
@@ -49,139 +51,208 @@
 
 </header>
 
+
+
 <main>
 
-<div class="perfil-card">
 
-    <div class="perfil-topo">
+<section class="perfil-card">
 
-        <div class="foto">
 
-            <span id="inicial">V</span>
+<div class="perfil-topo">
 
-        </div>
 
-        <div class="dados">
+<div class="foto">
 
-            <h1 id="nomeUsuario">
-
-                Vitória Letícia
-
-            </h1>
-
-            <p id="arroba">
-
-                @vitorialeticia
-
-            </p>
-
-            <p id="bio">
-
-                Ainda escrevendo minha primeira história no Suspiro. 💜
-
-            </p>
-
-            <button id="editarPerfil">
-
-                <i class="fa-solid fa-pen"></i>
-
-                Editar Perfil
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="estatisticas">
-
-        <div>
-
-            <h2 id="posts">
-
-                0
-
-            </h2>
-
-            <span>Posts</span>
-
-        </div>
-
-        <div>
-
-            <h2>
-
-                0
-
-            </h2>
-
-            <span>Seguidores</span>
-
-        </div>
-
-        <div>
-
-            <h2>
-
-                0
-
-            </h2>
-
-            <span>Seguindo</span>
-
-        </div>
-
-    </div>
+<span id="inicial">
+V
+</span>
 
 </div>
+
+
+
+<div class="dados">
+
+
+<h1 id="nomeUsuario">
+Vitória Letícia
+</h1>
+
+
+<p id="arroba">
+@vitorialeticia
+</p>
+
+
+<p id="bio">
+Ainda escrevendo minha primeira história no Suspiro. 💜
+</p>
+
+
+
+<button id="editarPerfil">
+
+<i class="fa-solid fa-pen"></i>
+
+Editar Perfil
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="estatisticas">
+
+
+<div>
+
+<h2 id="posts">
+0
+</h2>
+
+<span>
+Posts
+</span>
+
+</div>
+
+
+
+<div>
+
+<h2>
+0
+</h2>
+
+<span>
+Seguidores
+</span>
+
+</div>
+
+
+
+<div>
+
+<h2>
+0
+</h2>
+
+<span>
+Seguindo
+</span>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
 
 
 <!-- ===========================
 TOPS FAVORITOS
 =========================== -->
-<div class="modal" id="modalTop">
+
+
 <section class="tops">
 
-    <h2>⭐ Meus Favoritos</h2>
 
-    <div class="tops-grid">
+<h2>
+⭐ Meus Favoritos
+</h2>
 
-        <div class="top-card" onclick="abrirModal('filme')">
 
-            <img id="capaFilme" src="assets/capas/placeholder.png">
 
-            <span id="nomeFilme">Escolher Filme</span>
+<div class="tops-grid">
 
-        </div>
 
-        <div class="top-card" onclick="abrirModal('livro')">
 
-            <img id="capaLivro" src="assets/capas/placeholder.png">
+<div class="top-card" onclick="abrirModal('filme')">
 
-            <span id="nomeLivro">Escolher Livro</span>
 
-        </div>
+<img 
+id="capaFilme"
+src="assets/capas/placeholder.png">
 
-        <div class="top-card" onclick="abrirModal('jogo')">
 
-            <img id="capaJogo" src="assets/capas/placeholder.png">
+<span id="nomeFilme">
+Escolher Filme
+</span>
 
-            <span id="nomeJogo">Escolher Jogo</span>
 
-        </div>
+</div>
 
-        <div class="top-card" onclick="abrirModal('musica')">
 
-            <img id="capaMusica" src="assets/capas/placeholder.png">
 
-            <span id="nomeMusica">Escolher Música</span>
 
-        </div>
+<div class="top-card" onclick="abrirModal('livro')">
 
-    </div>
 
-</section>
-    <!-- ===========================
+<img 
+id="capaLivro"
+src="assets/capas/placeholder.png">
+
+
+<span id="nomeLivro">
+Escolher Livro
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="top-card" onclick="abrirModal('jogo')">
+
+
+<img 
+id="capaJogo"
+src="assets/capas/placeholder.png">
+
+
+<span id="nomeJogo">
+Escolher Jogo
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="top-card" onclick="abrirModal('musica')">
+
+
+<img 
+id="capaMusica"
+src="assets/capas/placeholder.png">
+
+
+<span id="nomeMusica">
+Escolher Música
+</span>
+
+
+</div>
+
+
+
+</div>
+<!-- ===========================
 PUBLICAÇÕES
 =========================== -->
 
@@ -190,37 +261,27 @@ PUBLICAÇÕES
     <div class="titulo-publicacoes">
 
         <h2>
-
             Minhas Publicações
-
         </h2>
 
         <button id="novoPost" class="btn-publicacao">
-
             + Nova publicação
-
         </button>
 
     </div>
 
-    <div id="listaPosts">
-
-    </div>
+    <div id="listaPosts"></div>
 
     <div class="sem-post" id="semPost">
 
         <i class="fa-regular fa-image"></i>
 
         <h3>
-
             Nenhuma publicação ainda
-
         </h3>
 
         <p>
-
             Compartilhe seu primeiro momento e inspire outras pessoas.
-
         </p>
 
     </div>
@@ -237,11 +298,7 @@ MODAL EDITAR PERFIL
 
     <div class="modal-content">
 
-        <h2>
-
-            Editar Perfil
-
-        </h2>
+        <h2>Editar Perfil</h2>
 
         <input
             type="text"
@@ -261,15 +318,11 @@ MODAL EDITAR PERFIL
         <div class="modal-botoes">
 
             <button id="salvar">
-
                 Salvar
-
             </button>
 
             <button id="cancelar">
-
                 Cancelar
-
             </button>
 
         </div>
@@ -286,34 +339,20 @@ MODAL ESCOLHER TIPO DE POST
 
     <div class="modal-box">
 
-        <h2>
+        <h2>Nova publicação</h2>
 
-            Nova publicação
-
-        </h2>
-
-        <p>
-
-            Como deseja compartilhar hoje?
-
-        </p>
+        <p>Como deseja compartilhar hoje?</p>
 
         <button id="btnFoto" class="tipo-post">
-
             📷 Publicar uma foto
-
         </button>
 
         <button id="btnPensamento" class="tipo-post">
-
             💭 Compartilhar um pensamento
-
         </button>
 
         <button id="fecharModal" class="cancelar">
-
             Cancelar
-
         </button>
 
     </div>
@@ -328,11 +367,7 @@ MODAL FOTO
 
     <div class="modal-box">
 
-        <h2>
-
-            Publicar Foto
-
-        </h2>
+        <h2>Publicar Foto</h2>
 
         <input
             type="file"
@@ -359,7 +394,7 @@ MODAL FOTO
 MODAL PENSAMENTO
 =========================== -->
 
-    <div class="modal-post" id="modalPensamento">
+<div class="modal-post" id="modalPensamento">
 
     <div class="modal-box">
 
@@ -367,23 +402,20 @@ MODAL PENSAMENTO
             Compartilhar pensamento 💭
         </h2>
 
-        <textarea 
+        <textarea
             id="textoPensamento"
             rows="6"
-            placeholder="O que você está sentindo hoje?">
-        </textarea>
+            placeholder="O que você está pensando hoje?"></textarea>
 
-
-        <button 
+        <button
             id="publicarPensamento"
             class="btn-publicar">
 
-            Publicar pensamento
+            Publicar
 
         </button>
 
-
-        <button 
+        <button
             id="fecharPensamento"
             class="cancelar">
 
@@ -395,12 +427,40 @@ MODAL PENSAMENTO
 
 </div>
 
-<script src="filmes.js"></script>
+<!-- ===========================
+MODAL TOPS
+=========================== -->
+
+<div class="modal" id="modalTop">
+
+    <div class="modal-content">
+
+        <h2 id="tituloModal">
+            Escolher
+        </h2>
+
+        <input
+            type="text"
+            id="pesquisaTop"
+            placeholder="Pesquisar...">
+
+        <div id="listaResultados"></div>
+
+        <button id="fecharTop">
+            Fechar
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+    <script src="filmes.js"></script>
 <script src="livros.js"></script>
 <script src="jogos.js"></script>
 <script src="musicas.js"></script>
 <script src="tops.js"></script>
 <script src="perfil.js"></script>
-    
+
 </body>
 </html>
