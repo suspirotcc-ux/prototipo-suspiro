@@ -139,85 +139,46 @@
 TOP FAVORITOS
 =========================== -->
 
+
+<!-- ===========================
+TOPS FAVORITOS
+=========================== -->
+
 <section class="tops">
 
-    <h2>
-
-        Top Favoritos
-
-    </h2>
+    <h2>⭐ Meus Favoritos</h2>
 
     <div class="tops-grid">
 
-        <div class="top-card" data-tipo="filme">
+        <div class="top-card" onclick="abrirModal('filme')">
 
-            <div class="top-capa">
+            <img id="capaFilme" src="assets/capas/placeholder.png">
 
-                <i class="fa-solid fa-film"></i>
-
-            </div>
-
-            <h3>Filme</h3>
-
-            <p id="topFilme">
-
-                Adicionar favorito
-
-            </p>
+            <span id="nomeFilme">Escolher Filme</span>
 
         </div>
 
-        <div class="top-card" data-tipo="musica">
+        <div class="top-card" onclick="abrirModal('livro')">
 
-            <div class="top-capa">
+            <img id="capaLivro" src="assets/capas/placeholder.png">
 
-                <i class="fa-solid fa-music"></i>
-
-            </div>
-
-            <h3>Música</h3>
-
-            <p id="topMusica">
-
-                Adicionar favorito
-
-            </p>
+            <span id="nomeLivro">Escolher Livro</span>
 
         </div>
 
-        <div class="top-card" data-tipo="livro">
+        <div class="top-card" onclick="abrirModal('jogo')">
 
-            <div class="top-capa">
+            <img id="capaJogo" src="assets/capas/placeholder.png">
 
-                <i class="fa-solid fa-book"></i>
-
-            </div>
-
-            <h3>Livro</h3>
-
-            <p id="topLivro">
-
-                Adicionar favorito
-
-            </p>
+            <span id="nomeJogo">Escolher Jogo</span>
 
         </div>
 
-        <div class="top-card" data-tipo="jogo">
+        <div class="top-card" onclick="abrirModal('musica')">
 
-            <div class="top-capa">
+            <img id="capaMusica" src="assets/capas/placeholder.png">
 
-                <i class="fa-solid fa-gamepad"></i>
-
-            </div>
-
-            <h3>Jogo</h3>
-
-            <p id="topJogo">
-
-                Adicionar favorito
-
-            </p>
+            <span id="nomeMusica">Escolher Música</span>
 
         </div>
 
