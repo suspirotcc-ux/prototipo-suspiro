@@ -1,255 +1,567 @@
+// ======================================================
+// SUSPIRO - PERFIL
+// ======================================================
+
 // =====================================
-// CARREGAR DADOS DO USUÁRIO
+// DADOS DO PERFIL
 // =====================================
 
 const nomeUsuario = document.getElementById("nomeUsuario");
 const arroba = document.getElementById("arroba");
 const bio = document.getElementById("bio");
 const inicial = document.getElementById("inicial");
-
-// Dados vindos do login/cadastro
-
-const nomeSalvo = localStorage.getItem("nome");
-const usuarioSalvo = localStorage.getItem("usuario");
-const bioSalva = localStorage.getItem("bio");
-
-// Nome
-
-if(nomeSalvo){
-
-    nomeUsuario.textContent = nomeSalvo;
-    inicial.textContent = nomeSalvo.charAt(0).toUpperCase();
-
-}
-
-// Arroba
-
-if(usuarioSalvo){
-
-    arroba.textContent = usuarioSalvo;
-
-}
-
-// Bio
-
-if(bioSalva){
-
-    bio.textContent = bioSalva;
-
-}
+const contadorPosts = document.getElementById("posts");
 
 // =====================================
-// ELEMENTOS DO MODAL
+// BOTÕES
 // =====================================
-
-const modal = document.getElementById("modal");
 
 const editarPerfil = document.getElementById("editarPerfil");
+const salvarPerfil = document.getElementById("salvar");
 
-const cancelar = document.getElementById("cancelar");
+const novoPost = document.getElementById("novoPost");
 
-const salvar = document.getElementById("salvar");
+const btnFoto = document.getElementById("btnFoto");
+const btnPensamento = document.getElementById("btnPensamento");
 
-const novoNome = document.getElementById("novoNome");
-
-const novoUsuario = document.getElementById("novoUsuario");
-
-const novaBio = document.getElementById("novaBio");
-
-// =====================================
-// ABRIR MODAL
-// =====================================
-
-editarPerfil.addEventListener("click",()=>{
-
-    modal.classList.add("ativo");
-
-    novoNome.value = nomeUsuario.textContent;
-
-    novoUsuario.value = arroba.textContent.replace("@","");
-
-    novaBio.value = bio.textContent;
-
-});
+const publicarFoto = document.getElementById("publicarFoto");
+const publicarPensamento = document.getElementById("publicarPensamento");
 
 // =====================================
-// FECHAR MODAL
+// MODAIS
 // =====================================
 
-cancelar.addEventListener("click",()=>{
+const modalEditar = document.getElementById("modalEditar");
+const modalPost = document.getElementById("modalPost");
+const modalFoto = document.getElementById("modalFoto");
+const modalPensamento = document.getElementById("modalPensamento");
+const modalTop = document.getElementById("modalTop");
 
-    modal.classList.remove("ativo");
+// =====================================
+// FECHAR MODAIS
+// =====================================
 
-});
+document.getElementById("fecharEditar").onclick = () => {
 
-// Fecha clicando fora
+    modalEditar.style.display = "none";
 
-modal.addEventListener("click",(e)=>{
+}
 
-    if(e.target===modal){
+document.getElementById("fecharModal").onclick = () => {
 
-        modal.classList.remove("ativo");
+    modalPost.style.display = "none";
+
+}
+
+document.getElementById("fecharFoto").onclick = () => {
+
+    modalFoto.style.display = "none";
+
+}
+
+document.getElementById("fecharPensamento").onclick = () => {
+
+    modalPensamento.style.display = "none";
+
+}
+
+document.getElementById("fecharTop").onclick = () => {
+
+    modalTop.style.display = "none";
+
+}
+
+// =====================================
+// ABRIR MODAIS
+// =====================================
+
+editarPerfil.onclick = () => {
+
+    modalEditar.style.display = "flex";
+
+}
+
+novoPost.onclick = () => {
+
+    modalPost.style.display = "flex";
+
+}
+
+btnFoto.onclick = () => {
+
+    modalPost.style.display = "none";
+
+    modalFoto.style.display = "flex";
+
+}
+
+btnPensamento.onclick = () => {
+
+    modalPost.style.display = "none";
+
+    modalPensamento.style.display = "flex";
+
+}
+
+// =====================================
+// CARREGAR PERFIL
+// =====================================
+
+function carregarPerfil(){
+
+    const nome = localStorage.getItem("nome");
+    const usuario = localStorage.getItem("usuario");
+    const textoBio = localStorage.getItem("bio");
+
+    if(nome){
+
+        nomeUsuario.textContent = nome;
+
+        inicial.textContent = nome.charAt(0).toUpperCase();
 
     }
 
-});
+    if(usuario){
+
+        arroba.textContent = usuario;
+
+    }
+
+    if(textoBio){
+
+        bio.textContent = textoBio;
+
+    }
+
+}
+
+carregarPerfil();
 
 // =====================================
-// SALVAR ALTERAÇÕES
+// SALVAR PERFIL
 // =====================================
 
-salvar.addEventListener("click",()=>{
+salvarPerfil.onclick = () => {
 
-    const nome = novoNome.value.trim();
+    const novoNome = document.getElementById("novoNome").value.trim();
 
-    const usuario = novoUsuario.value.trim();
+    const novoUsuario = document.getElementById("novoUsuario").value.trim();
 
-    const biografia = novaBio.value.trim();
+    const novaBio = document.getElementById("novaBio").value.trim();
 
-    if(nome===""){
+    if(novoNome !== ""){
 
-        alert("Digite seu nome.");
+        localStorage.setItem("nome",novoNome);
+
+    }
+
+    if(novoUsuario !== ""){
+
+        localStorage.setItem("usuario","@" + novoUsuario.replace("@",""));
+
+    }
+
+    if(novaBio !== ""){
+
+        localStorage.setItem("bio",novaBio);
+
+    }
+
+    carregarPerfil();
+
+    modalEditar.style.display="none";
+
+}
+
+// =====================================
+// TOP FAVORITOS
+// =====================================
+
+let categoriaAtual = "";
+
+const pesquisaTop = document.getElementById("pesquisaTop");
+
+const listaResultados = document.getElementById("listaResultados");
+
+function abrirModal(tipo){
+
+    categoriaAtual = tipo;
+
+    modalTop.style.display = "flex";
+
+    pesquisaTop.value = "";
+
+    mostrarResultados("");
+
+}
+
+pesquisaTop.onkeyup = () => {
+
+    mostrarResultados(pesquisaTop.value);
+
+};
+// =====================================
+// LISTA DA CATEGORIA
+// =====================================
+
+function listaCategoria(){
+
+    if(categoriaAtual === "filme") return filmes;
+
+    if(categoriaAtual === "livro") return livros;
+
+    if(categoriaAtual === "jogo") return jogos;
+
+    if(categoriaAtual === "musica") return musicas;
+
+    return [];
+
+}
+
+// =====================================
+// MOSTRAR RESULTADOS
+// =====================================
+
+function mostrarResultados(texto){
+
+    listaResultados.innerHTML = "";
+
+    const lista = listaCategoria();
+
+    lista
+    .filter(item =>
+        item.nome.toLowerCase().includes(texto.toLowerCase())
+    )
+    .forEach(item=>{
+
+        const div = document.createElement("div");
+
+        div.className = "resultado";
+
+        div.innerHTML = `
+
+            <img src="${item.capa}">
+
+            <div>
+
+                <h4>${item.nome}</h4>
+
+                <span>Clique para selecionar</span>
+
+            </div>
+
+        `;
+
+        div.onclick = ()=>{
+
+            selecionarFavorito(item);
+
+        };
+
+        listaResultados.appendChild(div);
+
+    });
+
+}
+
+// =====================================
+// PRIMEIRA MAIÚSCULA
+// =====================================
+
+function primeiraMaiuscula(texto){
+
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+
+}
+
+// =====================================
+// ESCOLHER FAVORITO
+// =====================================
+
+function selecionarFavorito(item){
+
+    const nome = document.getElementById(
+        "nome" + primeiraMaiuscula(categoriaAtual)
+    );
+
+    const capa = document.getElementById(
+        "capa" + primeiraMaiuscula(categoriaAtual)
+    );
+
+    nome.textContent = item.nome;
+
+    capa.src = item.capa;
+
+    localStorage.setItem(
+
+        "top_" + categoriaAtual,
+
+        JSON.stringify(item)
+
+    );
+
+    modalTop.style.display = "none";
+
+}
+
+// =====================================
+// CARREGAR FAVORITOS
+// =====================================
+
+function carregarFavoritos(){
+
+    ["filme","livro","jogo","musica"].forEach(tipo=>{
+
+        const salvo = localStorage.getItem("top_" + tipo);
+
+        if(!salvo) return;
+
+        const item = JSON.parse(salvo);
+
+        document.getElementById(
+            "nome" + primeiraMaiuscula(tipo)
+        ).textContent = item.nome;
+
+        document.getElementById(
+            "capa" + primeiraMaiuscula(tipo)
+        ).src = item.capa;
+
+    });
+
+}
+
+carregarFavoritos();
+// =====================================
+// LISTA DA CATEGORIA
+// =====================================
+
+function listaCategoria(){
+
+    if(categoriaAtual === "filme") return filmes;
+
+    if(categoriaAtual === "livro") return livros;
+
+    if(categoriaAtual === "jogo") return jogos;
+
+    if(categoriaAtual === "musica") return musicas;
+
+    return [];
+
+}
+
+// =====================================
+// MOSTRAR RESULTADOS
+// =====================================
+
+function mostrarResultados(texto){
+
+    listaResultados.innerHTML = "";
+
+    const lista = listaCategoria();
+
+    lista
+    .filter(item =>
+        item.nome.toLowerCase().includes(texto.toLowerCase())
+    )
+    .forEach(item=>{
+
+        const div = document.createElement("div");
+
+        div.className = "resultado";
+
+        div.innerHTML = `
+
+            <img src="${item.capa}">
+
+            <div>
+
+                <h4>${item.nome}</h4>
+
+                <span>Clique para selecionar</span>
+
+            </div>
+
+        `;
+
+        div.onclick = ()=>{
+
+            selecionarFavorito(item);
+
+        };
+
+        listaResultados.appendChild(div);
+
+    });
+
+}
+
+// =====================================
+// PRIMEIRA MAIÚSCULA
+// =====================================
+
+function primeiraMaiuscula(texto){
+
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+
+}
+
+// =====================================
+// ESCOLHER FAVORITO
+// =====================================
+
+function selecionarFavorito(item){
+
+    const nome = document.getElementById(
+        "nome" + primeiraMaiuscula(categoriaAtual)
+    );
+
+    const capa = document.getElementById(
+        "capa" + primeiraMaiuscula(categoriaAtual)
+    );
+
+    nome.textContent = item.nome;
+
+    capa.src = item.capa;
+
+    localStorage.setItem(
+
+        "top_" + categoriaAtual,
+
+        JSON.stringify(item)
+
+    );
+
+    modalTop.style.display = "none";
+
+}
+
+// =====================================
+// CARREGAR FAVORITOS
+// =====================================
+
+function carregarFavoritos(){
+
+    ["filme","livro","jogo","musica"].forEach(tipo=>{
+
+        const salvo = localStorage.getItem("top_" + tipo);
+
+        if(!salvo) return;
+
+        const item = JSON.parse(salvo);
+
+        document.getElementById(
+            "nome" + primeiraMaiuscula(tipo)
+        ).textContent = item.nome;
+
+        document.getElementById(
+            "capa" + primeiraMaiuscula(tipo)
+        ).src = item.capa;
+
+    });
+
+}
+
+carregarFavoritos();
+// =====================================
+// PUBLICAÇÕES
+// =====================================
+
+const listaPosts = document.getElementById("listaPosts");
+const semPost = document.getElementById("semPost");
+
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+// =====================================
+// ATUALIZAR CONTADOR
+// =====================================
+
+function atualizarContador(){
+
+    contadorPosts.textContent = posts.length;
+
+}
+
+// =====================================
+// SALVAR POSTS
+// =====================================
+
+function salvarPosts(){
+
+    localStorage.setItem(
+
+        "posts",
+
+        JSON.stringify(posts)
+
+    );
+
+}
+
+// =====================================
+// MOSTRAR POSTS
+// =====================================
+
+function carregarPosts(){
+
+    listaPosts.innerHTML = "";
+
+    if(posts.length === 0){
+
+        semPost.style.display = "block";
+
+        atualizarContador();
 
         return;
 
     }
 
-    nomeUsuario.textContent = nome;
-
-    arroba.textContent = "@" + usuario;
-
-    bio.textContent = biografia;
-
-    inicial.textContent = nome.charAt(0).toUpperCase();
-
-    // salva
-
-    localStorage.setItem("nome",nome);
-
-    localStorage.setItem("usuario","@" + usuario);
-
-    localStorage.setItem("bio",biografia);
-
-    modal.classList.remove("ativo");
-
-});
-// =====================================
-// NOVA PUBLICAÇÃO
-// =====================================
-
-const btnNovoPost = document.getElementById("novoPost");
-
-const modalPost = document.getElementById("modalPost");
-
-const modalPensamento = document.getElementById("modalPensamento");
-
-const btnFoto = document.getElementById("btnFoto");
-
-const btnPensamento = document.getElementById("btnPensamento");
-
-const fecharModal = document.getElementById("fecharModal");
-
-const imagemPost = document.getElementById("imagemPost");
-
-const legendaPost = document.getElementById("legendaPost");
-
-const publicarFoto = document.getElementById("publicarFoto");
-
-const publicarPensamento = document.getElementById("publicarPensamento");
-
-const textoPensamento = document.getElementById("textoPensamento");
-
-const listaPosts = document.getElementById("listaPosts");
-
-const contadorPosts = document.getElementById("posts");
-
-// =====================================
-// LISTA DE POSTS
-// =====================================
-
-let posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-// =====================================
-// ABRIR MENU
-// =====================================
-
-btnNovoPost.addEventListener("click",()=>{
-
-    modalPost.classList.add("ativo");
-
-});
-
-// =====================================
-// FECHAR MENU
-// =====================================
-
-fecharModal.addEventListener("click",()=>{
-
-    modalPost.classList.remove("ativo");
-
-});
-
-// =====================================
-// ESCOLHER FOTO
-// =====================================
-
-btnFoto.addEventListener("click",()=>{
-
-    modalPost.classList.remove("ativo");
-
-    document.querySelector(".sem-post").style.display="none";
-
-    imagemPost.parentElement.parentElement.style.display="flex";
-
-});
-
-// =====================================
-// ESCOLHER PENSAMENTO
-// =====================================
-
-btnPensamento.addEventListener("click",()=>{
-
-    modalPost.classList.remove("ativo");
-
-    modalPensamento.classList.add("ativo");
-
-});
-
-// =====================================
-// FUNÇÃO DESENHAR POSTS
-// =====================================
-
-function renderizarPosts(){
-
-    listaPosts.innerHTML="";
-
-    contadorPosts.textContent=posts.length;
+    semPost.style.display = "none";
 
     posts.forEach((post,index)=>{
 
-        const card=document.createElement("div");
+        const card = document.createElement("div");
 
-        card.className="post";
+        card.className = "post";
 
-        let conteudo="";
+        if(post.tipo === "foto"){
 
-        if(post.tipo==="foto"){
+            card.innerHTML = `
 
-            conteudo=`
+                <div class="post-topo">
+
+                    <div class="usuario-post">
+
+                        <div class="avatar">
+
+                            ${nomeUsuario.textContent.charAt(0)}
+
+                        </div>
+
+                        <div>
+
+                            <h4>${nomeUsuario.textContent}</h4>
+
+                            <span>${arroba.textContent}</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="menu">
+
+                        <i
+                        class="fa-solid fa-trash"
+                        onclick="excluirPost(${index})"></i>
+
+                    </div>
+
+                </div>
 
                 <img src="${post.imagem}">
 
-                <p class="legenda">${post.legenda}</p>
+                <div class="post-legenda">
 
-            `;
-
-        }else{
-
-            conteudo=`
-
-                <div class="pensamento">
-
-                    ${post.texto}
+                    <p>${post.legenda}</p>
 
                 </div>
 
@@ -257,279 +569,74 @@ function renderizarPosts(){
 
         }
 
-        card.innerHTML=`
+        else{
 
-            <div class="post-topo">
+            card.innerHTML = `
 
-                <div class="usuario-post">
+                <div class="post-topo">
 
-                    <div class="foto-mini">
+                    <div class="usuario-post">
 
-                        ${inicial.textContent}
+                        <div class="avatar">
+
+                            ${nomeUsuario.textContent.charAt(0)}
+
+                        </div>
+
+                        <div>
+
+                            <h4>${nomeUsuario.textContent}</h4>
+
+                            <span>${arroba.textContent}</span>
+
+                        </div>
 
                     </div>
 
-                    <div>
+                    <div class="menu">
 
-                        <h4>${nomeUsuario.textContent}</h4>
-
-                        <span>${arroba.textContent}</span>
+                        <i
+                        class="fa-solid fa-trash"
+                        onclick="excluirPost(${index})"></i>
 
                     </div>
 
                 </div>
 
-                <button class="btn-apagar" onclick="apagarPost(${index})">
+                <div class="post-pensamento">
 
-                    Excluir
+                    💭 ${post.texto}
 
-                </button>
+                </div>
 
-            </div>
+            `;
 
-            ${conteudo}
-
-        `;
+        }
 
         listaPosts.appendChild(card);
 
     });
 
-}
-
-renderizarPosts();
-
-// =====================================
-// PUBLICAR FOTO
-// =====================================
-
-publicarFoto.addEventListener("click",()=>{
-
-    const arquivo=imagemPost.files[0];
-
-    if(!arquivo){
-
-        alert("Escolha uma imagem.");
-
-        return;
-
-    }
-
-    const leitor=new FileReader();
-
-    leitor.onload=function(e){
-
-        posts.unshift({
-
-            tipo:"foto",
-
-            imagem:e.target.result,
-
-            legenda:legendaPost.value
-
-        });
-
-        localStorage.setItem("posts",JSON.stringify(posts));
-
-        renderizarPosts();
-
-        imagemPost.value="";
-
-        legendaPost.value="";
-
-        imagemPost.parentElement.parentElement.style.display="none";
-
-    }
-
-    leitor.readAsDataURL(arquivo);
-
-});
-
-// =====================================
-// PUBLICAR PENSAMENTO
-// =====================================
-
-publicarPensamento.addEventListener("click",()=>{
-
-    if(textoPensamento.value.trim()==""){
-
-        alert("Escreva alguma coisa.");
-
-        return;
-
-    }
-
-    posts.unshift({
-
-        tipo:"texto",
-
-        texto:textoPensamento.value
-
-    });
-
-    localStorage.setItem("posts",JSON.stringify(posts));
-
-    renderizarPosts();
-
-    textoPensamento.value="";
-
-    modalPensamento.classList.remove("ativo");
-
-});
-// =====================================
-// APAGAR PUBLICAÇÃO
-// =====================================
-
-function apagarPost(indice){
-
-    const confirmar = confirm("Deseja realmente apagar esta publicação?");
-
-    if(!confirmar) return;
-
-    posts.splice(indice,1);
-
-    localStorage.setItem("posts",JSON.stringify(posts));
-
-    renderizarPosts();
+    atualizarContador();
 
 }
 
+carregarPosts();
+
 // =====================================
-// MOSTRAR / ESCONDER "SEM POSTS"
+// EXCLUIR PUBLICAÇÃO
 // =====================================
 
-function atualizarEstadoPerfil(){
+function excluirPost(indice){
 
-    const semPost = document.getElementById("semPost");
+    if(confirm("Deseja excluir esta publicação?")){
 
-    if(!semPost) return;
+        posts.splice(indice,1);
 
-    if(posts.length===0){
+        salvarPosts();
 
-        semPost.style.display="block";
-
-    }else{
-
-        semPost.style.display="none";
+        carregarPosts();
 
     }
 
 }
-
-// =====================================
-// ATUALIZA RENDERIZAÇÃO
-// =====================================
-
-const renderOriginal = renderizarPosts;
-
-renderizarPosts = function(){
-
-    renderOriginal();
-
-    atualizarEstadoPerfil();
-
-};
-
-// Atualiza ao abrir a página
-
-renderizarPosts();
-
-// =====================================
-// FECHAR MODAIS CLICANDO FORA
-// =====================================
-
-window.addEventListener("click",(e)=>{
-
-    if(e.target===modal){
-
-        modal.classList.remove("ativo");
-
-    }
-
-    if(e.target===modalPost){
-
-        modalPost.classList.remove("ativo");
-
-    }
-
-    if(e.target===modalPensamento){
-
-        modalPensamento.classList.remove("ativo");
-
-    }
-
-});
-
-// =====================================
-// TECLA ESC FECHA MODAIS
-// =====================================
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        modal.classList.remove("ativo");
-
-        modalPost.classList.remove("ativo");
-
-        modalPensamento.classList.remove("ativo");
-
-    }
-
-});
-
-// =====================================
-// ANIMAÇÃO DOS POSTS
-// =====================================
-
-const observer = new MutationObserver(()=>{
-
-    document.querySelectorAll(".post").forEach(post=>{
-
-        post.style.opacity="0";
-
-        post.style.transform="translateY(25px)";
-
-        setTimeout(()=>{
-
-            post.style.transition=".4s";
-
-            post.style.opacity="1";
-
-            post.style.transform="translateY(0)";
-
-        },100);
-
-    });
-
-});
-
-observer.observe(listaPosts,{
-
-    childList:true
-
-});
-
-// =====================================
-// CARREGAR POSTS AO ABRIR
-// =====================================
-
-window.addEventListener("load",()=>{
-
-    renderizarPosts();
-
-});
-
-// =====================================
-// FUTURAMENTE
-// =====================================
-
-// Aqui vamos adicionar:
-//
-// ⭐ Tops Favoritos (Letterboxd)
-// 📚 Livros
-// 🎬 Filmes
-// 🎮 Jogos
-// 🎵 Músicas
-//
-// Tudo usando a MESMA fileira.
