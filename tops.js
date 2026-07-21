@@ -1,34 +1,37 @@
-let categoriaAtual="";
+let categoriaAtual = "";
 
-const modalTop=document.getElementById("modalTop");
+const modalTop = document.getElementById("modalTop");
+const pesquisa = document.getElementById("pesquisaTop");
+const resultados = document.getElementById("listaResultados");
 
-const pesquisa=document.getElementById("pesquisaTop");
-
-const resultados=document.getElementById("listaResultados");
 
 function abrirModal(tipo){
 
-    categoriaAtual=tipo;
+    categoriaAtual = tipo;
 
-    modalTop.style.display="flex";
+    modalTop.style.display = "flex";
 
-    pesquisa.value="";
+    pesquisa.value = "";
 
     mostrarLista("");
 
 }
 
-document.getElementById("fecharTop").onclick=()=>{
 
-    modalTop.style.display="none";
+document.getElementById("fecharTop").onclick = () => {
 
-}
+    modalTop.style.display = "none";
 
-pesquisa.onkeyup=()=>{
+};
+
+
+pesquisa.onkeyup = () => {
 
     mostrarLista(pesquisa.value);
 
-}
+};
+
+
 
 function mostrarLista(texto){
 
@@ -36,66 +39,117 @@ function mostrarLista(texto){
 
     let lista = [];
 
+
     if(categoriaAtual === "filme") lista = filmes;
     if(categoriaAtual === "livro") lista = livros;
     if(categoriaAtual === "jogo") lista = jogos;
     if(categoriaAtual === "musica") lista = musicas;
 
+
+
     lista
-    .filter(item => item.nome.toLowerCase().includes(texto.toLowerCase()))
+    .filter(item =>
+        item.nome.toLowerCase().includes(texto.toLowerCase())
+    )
     .forEach(item => {
+
 
         const div = document.createElement("div");
 
         div.className = "resultado";
 
-        div.innerHTML = item.nome;
+        div.textContent = item.nome;
 
-        div.onclick = function(){
+
+        div.onclick = () => {
 
             selecionarTop(item);
 
         };
 
-        function selecionarTop(item){
-
-    const nome = document.getElementById("nome" + primeiraMaiuscula(categoriaAtual));
-    const capa = document.getElementById("capa" + primeiraMaiuscula(categoriaAtual));
-
-    nome.textContent = item.nome;
-
-    capa.src = item.capa;
-
-    localStorage.setItem(categoriaAtual, JSON.stringify(item));
-
-    modalTop.style.display = "none";
-
-}
 
         resultados.appendChild(div);
 
+
     });
 
-    function primeiraMaiuscula(texto){
+
+}
+
+
+
+function selecionarTop(item){
+
+
+    const nome = document.getElementById(
+        "nome" + primeiraMaiuscula(categoriaAtual)
+    );
+
+
+    const capa = document.getElementById(
+        "capa" + primeiraMaiuscula(categoriaAtual)
+    );
+
+
+    nome.textContent = item.nome;
+
+
+    capa.src = item.capa;
+
+
+    localStorage.setItem(
+        categoriaAtual,
+        JSON.stringify(item)
+    );
+
+
+    modalTop.style.display = "none";
+
+
+}
+
+
+
+function primeiraMaiuscula(texto){
 
     return texto.charAt(0).toUpperCase() + texto.slice(1);
 
 }
 
+
+
+// carregar favoritos salvos quando abrir página
+
+window.onload = () => {
+
+
     ["filme","livro","jogo","musica"].forEach(tipo=>{
 
-    const salvo = localStorage.getItem(tipo);
 
-    if(salvo){
+        const salvo = localStorage.getItem(tipo);
 
-        const item = JSON.parse(salvo);
 
-        document.getElementById("nome" + primeiraMaiuscula(tipo)).textContent = item.nome;
+        if(salvo){
 
-        document.getElementById("capa" + primeiraMaiuscula(tipo)).src = item.capa;
 
-    }
+            const item = JSON.parse(salvo);
 
-});
 
-}
+            document.getElementById(
+                "nome" + primeiraMaiuscula(tipo)
+            ).textContent = item.nome;
+
+
+
+            document.getElementById(
+                "capa" + primeiraMaiuscula(tipo)
+            ).src = item.capa;
+
+
+        }
+
+
+    });
+
+
+};
