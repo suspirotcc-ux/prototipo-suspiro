@@ -1,557 +1,1097 @@
-/* ===========================
-RESET & VARIÁVEIS DO LOGIN
-=========================== */
+/* =====================================================
+   SUSPIRO - PERFIL CSS
+===================================================== */
+
+:root {
+
+    --fundo: #121018;
+    --card: #1d1728;
+    --card2: #241c31;
+
+    --roxo: #bb86fc;
+    --roxo-hover: #8b5cf6;
+
+    --texto: #f4ecff;
+    --texto-fraco: #b9b0c8;
+
+    --borda: rgba(255,255,255,0.08);
+
+}
+
+
+/* ==========================
+   RESET
+========================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-:root {
-    --bg: #120c17;
-    --bg2: #1b1324;
-    --card: rgba(32, 22, 43, .88);
-
-    --roxo: #A370F7;
-    --roxo2: #BB8EFF;
-
-    --texto: #F6F1FF;
-    --texto2: #B8ABD0;
-
-    --input: #2b2038;
-}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #120c17, #1b1324, #26193a);
+
     min-height: 100vh;
+
+    background:
+    linear-gradient(
+        135deg,
+        #121018,
+        #181221
+    );
+
     color: var(--texto);
-    padding-bottom: 50px;
-    position: relative;
+
     overflow-x: hidden;
+
 }
 
-/* ===========================
-BOLHAS DE FUNDO
-=========================== */
+
+/* ==========================
+   FUNDO DECORATIVO
+========================== */
+
 
 .background-circle {
-    position: absolute;
+
+    position: fixed;
+
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: .22;
-    pointer-events: none;
-    z-index: 0;
+
+    filter: blur(100px);
+
+    opacity: .25;
+
+    z-index: -1;
+
 }
+
 
 .circle1 {
-    width: 320px;
-    height: 320px;
-    background: #8b5cf6;
-    top: -80px;
-    left: -60px;
+
+    width: 350px;
+    height: 350px;
+
+    background: #bb86fc;
+
+    top: -120px;
+    left: -100px;
+
 }
+
 
 .circle2 {
-    width: 280px;
-    height: 280px;
-    background: #b989ff;
-    right: -60px;
-    bottom: -60px;
+
+    width: 300px;
+    height: 300px;
+
+    background: #8b5cf6;
+
+    right: -100px;
+    bottom: -100px;
+
 }
 
-/* ===========================
-HEADER / NAV
-=========================== */
+
+
+/* ==========================
+   HEADER
+========================== */
+
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    width: 100%;
+
     padding: 20px 8%;
-    background: rgba(18, 12, 23, 0.65);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
 
-header .logo {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--roxo);
-}
-
-header nav {
     display: flex;
-    gap: 24px;
+
+    justify-content: space-between;
+
     align-items: center;
+
+    background: rgba(18,16,24,.75);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--borda);
+
 }
 
-header nav a {
-    color: var(--texto2);
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    transition: .3s;
+
+.logo {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: var(--roxo);
+
 }
 
-header nav a:hover {
+
+nav {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+
+nav a {
+
     color: var(--texto);
+
+    text-decoration: none;
+
+    transition: .3s;
+
 }
 
-/* ===========================
-CONTAINER PRINCIPAL
-=========================== */
+
+nav a:hover {
+
+    color: var(--roxo);
+
+}
+
+
+
+/* ==========================
+   CONTEÚDO PRINCIPAL
+========================== */
+
 
 main {
-    max-width: 900px;
+
+    width: 85%;
+
+    max-width: 1100px;
+
     margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    position: relative;
-    z-index: 1;
+
 }
 
-/* ===========================
-CARD DE PERFIL
-=========================== */
+
+
+/* ==========================
+   PERFIL
+========================== */
+
 
 .perfil-card {
+
     background: var(--card);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, .08);
-    border-radius: 28px;
+
+    border-radius: 25px;
+
     padding: 35px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+
+    border: 1px solid var(--borda);
+
 }
+
 
 .perfil-topo {
+
     display: flex;
+
     align-items: center;
-    gap: 28px;
+
+    gap: 30px;
+
 }
+
+
 
 .foto {
-    width: 100px;
-    height: 100px;
+
+    width: 140px;
+
+    height: 140px;
+
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--roxo), var(--roxo2));
+
+    background: linear-gradient(
+        135deg,
+        #bb86fc,
+        #8b5cf6
+    );
+
     display: flex;
-    align-items: center;
+
     justify-content: center;
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
-    box-shadow: 0 10px 25px rgba(163, 112, 247, .35);
-    flex-shrink: 0;
+
+    align-items: center;
+
 }
+
+
+.foto span {
+
+    font-size: 55px;
+
+    font-weight: 700;
+
+    color:white;
+
+}
+
+
 
 .dados h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 2px;
+
+    font-size: 32px;
+
 }
 
-.dados #arroba {
-    color: var(--roxo2);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 6px;
+
+#arroba {
+
+    color: var(--roxo);
+
+    margin: 5px 0;
+
 }
 
-.dados #bio {
-    color: var(--texto2);
-    font-size: 14px;
-    line-height: 1.5;
+
+#bio {
+
+    color: var(--texto-fraco);
+
+    margin-top: 10px;
+
+    max-width: 500px;
+
 }
+
+
 
 #editarPerfil {
-    margin-top: 12px;
-    background: var(--input);
-    color: var(--texto);
-    border: 1px solid rgba(255, 255, 255, .08);
-    padding: 9px 18px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: .35s;
+
+    margin-top: 20px;
+
+    padding: 12px 25px;
+
+    border-radius: 25px;
+
+    border:none;
+
+    background: var(--roxo);
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
 }
+
 
 #editarPerfil:hover {
-    background: var(--roxo);
-    color: white;
-    box-shadow: 0 8px 20px rgba(163, 112, 247, .3);
+
+    background:var(--roxo-hover);
+
+    color:white;
+
 }
 
-/* ===========================
-ESTATÍSTICAS
-=========================== */
+
+
+/* ==========================
+   ESTATÍSTICAS
+========================== */
+
 
 .estatisticas {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    text-align: center;
+
+    display:flex;
+
+    gap:60px;
+
+    margin-top:35px;
+
+    padding-top:25px;
+
+    border-top:1px solid var(--borda);
+
 }
+
+
+.estatisticas div {
+
+    text-align:center;
+
+}
+
 
 .estatisticas h2 {
-    font-size: 22px;
-    font-weight: 700;
+
+    color:var(--roxo);
+
 }
+
 
 .estatisticas span {
-    color: var(--texto2);
-    font-size: 13px;
+
+    color:var(--texto-fraco);
+
 }
 
-/* ===========================
-TOP FAVORITOS
-=========================== */
 
-.titulo-top h2, .titulo-publicacoes h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 4px;
+
+/* ==========================
+   FAVORITOS
+========================== */
+
+
+.tops {
+
+    margin-top:40px;
+
 }
 
-.titulo-top p, .titulo-publicacoes p {
-    color: var(--texto2);
-    font-size: 14px;
-    margin-bottom: 18px;
+
+.titulo-top h2,
+.titulo-publicacoes h2 {
+
+    font-size:26px;
+
 }
+
+
+.titulo-top p,
+.titulo-publicacoes p {
+
+    color:var(--texto-fraco);
+
+    margin-top:5px;
+
+}
+
+
 
 .tops-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 16px;
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
 }
+
+
 
 .top-card {
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, .08);
-    border-radius: 20px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: .35s;
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:15px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.3s;
+
 }
+
+
 
 .top-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--roxo);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+    transform:translateY(-5px);
+
 }
+
+
 
 .top-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    background: var(--input);
+
+    width:100%;
+
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
 }
 
-.top-card .overlay {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    height: 200px;
-    background: rgba(18, 12, 23, 0.75);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: .35s;
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--roxo2);
-}
 
-.top-card:hover .overlay {
-    opacity: 1;
-}
 
 .top-card small {
-    color: var(--roxo2);
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 2px;
+
+    display:block;
+
+    margin-top:12px;
+
+    color:var(--roxo);
+
 }
+
 
 .top-card span {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--texto);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+
+    display:block;
+
+    margin-top:5px;
+
 }
 
-/* ===========================
-PUBLICAÇÕES
-=========================== */
+
+
+.overlay {
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+.top-card:hover .overlay {
+
+    opacity:1;
+
+}
+/* =====================================================
+   PUBLICAÇÕES
+===================================================== */
+
+
+.publicacoes {
+
+    margin-top:50px;
+
+}
+
+
 
 .titulo-publicacoes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
 }
+
+
 
 .btn-publicacao {
-    padding: 12px 22px;
-    border: none;
-    border-radius: 40px;
-    background: linear-gradient(45deg, #8c5cf6, #bb8eff);
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: .35s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+
+    background:var(--roxo);
+
+    color:#17121f;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
 }
+
+
 
 .btn-publicacao:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(163, 112, 247, .35);
+
+    background:var(--roxo-hover);
+
+    color:white;
+
 }
+
+
+
+/* ==========================
+   POSTS
+========================== */
+
+
+#listaPosts {
+
+    margin-top:25px;
+
+}
+
+
+
+.card-post {
+
+    background:var(--card);
+
+    border:1px solid var(--borda);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    position:relative;
+
+}
+
+
+
+.card-post small {
+
+    color:var(--texto-fraco);
+
+}
+
+
+
+.card-post p {
+
+    margin-top:15px;
+
+    line-height:1.6;
+
+}
+
+
+
+.card-post img {
+
+    width:100%;
+
+    max-height:450px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+}
+
+
+
+.card-post button {
+
+    position:absolute;
+
+    right:15px;
+
+    top:15px;
+
+    background:none;
+
+    border:none;
+
+    color:#ff6b6b;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+
+
+.card-post button:hover {
+
+    color:#ff3333;
+
+}
+
+
+
+/* ==========================
+   SEM POSTS
+========================== */
+
 
 .sem-post {
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    border: 1px dashed rgba(255, 255, 255, .15);
-    border-radius: 24px;
-    padding: 45px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+
+    margin-top:30px;
+
+    padding:50px 20px;
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    border:1px solid var(--borda);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
 }
+
+
 
 .sem-post i {
-    font-size: 36px;
-    color: var(--roxo);
-    margin-bottom: 4px;
+
+    font-size:50px;
+
+    color:var(--roxo);
+
+    margin-bottom:20px;
+
 }
 
-.sem-post h3 {
-    font-size: 18px;
-    font-weight: 600;
-}
+
 
 .sem-post p {
-    color: var(--texto2);
-    font-size: 14px;
+
+    color:var(--texto-fraco);
+
 }
 
-/* ===========================
-MODAIS (ESTILO FIEL AO CARD DE LOGIN)
-=========================== */
+
+
+/* =====================================================
+   MODAIS
+===================================================== */
+
 
 .modal-post {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(18, 12, 23, 0.75);
-    backdrop-filter: blur(15px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
 }
+
+
 
 .modal-box {
-    width: 430px;
-    max-width: 90%;
-    background: var(--card);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, .08);
-    border-radius: 28px;
-    padding: 30px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    animation: fade .35s;
+
+    width:90%;
+
+    max-width:450px;
+
+    background:var(--card);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    border:1px solid var(--borda);
+
+    position:relative;
+
 }
 
-.fechar-modal {
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    background: none;
-    border: none;
-    color: var(--texto2);
-    font-size: 20px;
-    cursor: pointer;
-    transition: .3s;
-}
 
-.fechar-modal:hover {
-    color: white;
-}
 
 .modal-box h2 {
-    font-size: 22px;
-    font-weight: 700;
+
+    margin-bottom:10px;
+
 }
+
+
 
 .modal-box p {
-    color: var(--texto2);
-    font-size: 14px;
+
+    color:var(--texto-fraco);
+
+    margin-bottom:20px;
+
 }
 
-/* Inputs e Textareas dos Modais */
-.modal-box input[type="text"],
-.modal-box textarea {
-    width: 100%;
-    background: var(--input);
-    border: 1px solid rgba(255, 255, 255, .08);
-    color: white;
-    padding: 12px 15px;
-    border-radius: 14px;
-    outline: none;
-    transition: .3s;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+
+
+.fechar-modal {
+
+    position:absolute;
+
+    right:20px;
+
+    top:15px;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
 }
 
-.modal-box input[type="text"]::placeholder,
-.modal-box textarea::placeholder {
-    color: #9f93b7;
-}
 
-.modal-box textarea {
-    resize: none;
-    min-height: 90px;
-}
 
-.modal-box input[type="text"]:focus,
-.modal-box textarea:focus {
-    border-color: var(--roxo);
-    box-shadow: 0 0 20px rgba(163, 112, 247, .25);
-}
+/* ==========================
+   BOTÕES DOS MODAIS
+========================== */
+
 
 .tipo-post {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid rgba(255, 255, 255, .08);
-    border-radius: 14px;
-    background: var(--input);
-    color: var(--texto);
-    font-size: 14px;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    text-align: left;
-    cursor: pointer;
-    transition: .35s;
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:15px;
+
+    border-radius:15px;
+
+    border:none;
+
+    background:var(--card2);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
+
+
 
 .tipo-post:hover {
-    border-color: var(--roxo);
-    background: #342745;
+
+    background:var(--roxo);
+
 }
+
+
+
+/* ==========================
+   INPUTS
+========================== */
+
+
+.modal-box input,
+.modal-box textarea {
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    border:none;
+
+    outline:none;
+
+    background:#2d243b;
+
+    color:white;
+
+    resize:none;
+
+}
+
+
+
+.modal-box textarea {
+
+    min-height:120px;
+
+}
+
+
 
 .btn-publicar {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 40px;
-    background: linear-gradient(45deg, #8c5cf6, #bb8eff);
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: .35s;
-    margin-top: 6px;
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:25px;
+
+    border:none;
+
+    background:var(--roxo);
+
+    color:#17121f;
+
+    cursor:pointer;
+
+    font-weight:600;
+
 }
+
+
 
 .btn-publicar:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(163, 112, 247, .35);
+
+    background:var(--roxo-hover);
+
+    color:white;
+
 }
 
-/* Previews e Zoom da Imagem */
-.preview-imagem img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 14px;
-    display: none;
+
+
+/* ==========================
+   PREVIEW DE IMAGEM
+========================== */
+
+
+.preview-imagem {
+
+    margin-top:20px;
+
+    width:100%;
+
+    height:250px;
+
+    background:#0f0d14;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
 }
+
+
+
+.preview-imagem img {
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    display:none;
+
+}
+
+
 
 .controle-zoom {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--texto2);
+
+    margin-top:15px;
+
 }
 
-.controle-zoom input {
-    flex: 1;
+
+
+.controle-zoom label {
+
+    display:block;
+
+    margin-bottom:5px;
+
 }
 
-/* ===========================
-ANIMAÇÕES DO LOGIN
-=========================== */
 
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+/* ==========================
+   RESULTADOS FAVORITOS
+========================== */
+
+
+#listaResultados {
+
+    margin-top:15px;
+
 }
 
-/* ===========================
-RESPONSIVO
-=========================== */
 
-@media(max-width:600px) {
-    .perfil-topo {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .titulo-publicacoes {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
+#listaResultados input {
 
-    .modal-box {
-        padding: 24px;
-    }
+    margin-top:10px;
+
 }
+
+
+
+/* ==========================
+   MENU EXCLUIR
+========================== */
+
+
+.menu-post {
+
+    display:none;
+
+    position:absolute;
+
+    background:var(--card);
+
+    border-radius:15px;
+
+    padding:10px;
+
+}
+
+
+
+.menu-post button {
+
+    background:none;
+
+    border:none;
+
+    color:#ff6b6b;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+
+@media(max-width:900px){
+
+
+    main {
+
+        width:92%;
+
+    }
+
+
+
+    .tops-grid {
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+@media(max-width:650px){
+
+
+header {
+
+    padding:20px;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+
+nav {
+
+    gap:15px;
+
+}
+
+
+
+.perfil-topo {
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+
+
+.estatisticas {
+
+    justify-content:center;
+
+    gap:30px;
+
+}
+
+
+
+.titulo-publicacoes {
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+
+
+.tops-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.top-card img {
+
+    height:220px;
+
+}
+
+
+}
+
