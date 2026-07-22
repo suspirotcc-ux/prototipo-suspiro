@@ -1,231 +1,249 @@
-/* ===================================================
-   SUSPIRO - ESTILOS DO PERFIL (perfil.css)
-   =================================================== */
+/* ===========================
+RESET & VARIÁVEIS DO LOGIN
+=========================== */
 
-/* ---- RESET & VARIÁVEIS GLORAIS ---- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 :root {
-    --bg-dark: #0f0c1b;
-    --card-bg: rgba(255, 255, 255, 0.04);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --purple-primary: #8b5cf6;
-    --purple-hover: #7c3aed;
-    --purple-glow: rgba(139, 92, 246, 0.3);
-    --text-white: #ffffff;
-    --text-muted: #a1a1aa;
+    --bg: #120c17;
+    --bg2: #1b1324;
+    --card: rgba(32, 22, 43, .88);
+
+    --roxo: #A370F7;
+    --roxo2: #BB8EFF;
+
+    --texto: #F6F1FF;
+    --texto2: #B8ABD0;
+
+    --input: #2b2038;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #120c17, #1b1324, #26193a);
     min-height: 100vh;
+    color: var(--texto);
     padding-bottom: 50px;
-    overflow-x: hidden;
     position: relative;
+    overflow-x: hidden;
 }
 
-/* ---- CÍRCULOS DE FUNDO (GLOW EFFECT) ---- */
+/* ===========================
+BOLHAS DE FUNDO
+=========================== */
+
 .background-circle {
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    z-index: -1;
+    opacity: .22;
     pointer-events: none;
+    z-index: 0;
 }
 
 .circle1 {
-    width: 350px;
-    height: 350px;
-    background: var(--purple-primary);
-    opacity: 0.15;
-    top: -50px;
-    left: -50px;
+    width: 320px;
+    height: 320px;
+    background: #8b5cf6;
+    top: -80px;
+    left: -60px;
 }
 
 .circle2 {
-    width: 400px;
-    height: 400px;
-    background: #3b82f6;
-    opacity: 0.1;
-    bottom: 10%;
-    right: -100px;
+    width: 280px;
+    height: 280px;
+    background: #b989ff;
+    right: -60px;
+    bottom: -60px;
 }
 
-/* ---- HEADER / NAVBAR ---- */
+/* ===========================
+HEADER / NAV
+=========================== */
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(15, 12, 27, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--card-border);
+    background: rgba(18, 12, 23, 0.65);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 header .logo {
-    font-size: 1.5rem;
+    font-size: 28px;
     font-weight: 700;
-    color: var(--purple-primary);
-    letter-spacing: -0.5px;
+    color: var(--roxo);
 }
 
 header nav {
     display: flex;
-    gap: 25px;
+    gap: 24px;
     align-items: center;
 }
 
 header nav a {
-    color: var(--text-muted);
+    color: var(--texto2);
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s;
 }
 
 header nav a:hover {
-    color: var(--text-white);
+    color: var(--texto);
 }
 
-/* ---- CONTAINER PRINCIPAL ---- */
+/* ===========================
+CONTAINER PRINCIPAL
+=========================== */
+
 main {
-    max-width: 950px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 40px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 35px;
+    position: relative;
+    z-index: 1;
 }
 
-/* ---- CARD DE PERFIL ---- */
+/* ===========================
+CARD DE PERFIL
+=========================== */
+
 .perfil-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 28px;
     padding: 35px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
 }
 
 .perfil-topo {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 28px;
 }
 
 .foto {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--purple-primary), #3b82f6);
+    background: linear-gradient(45deg, var(--roxo), var(--roxo2));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.8rem;
+    font-size: 40px;
     font-weight: 700;
-    color: #fff;
-    box-shadow: 0 0 20px var(--purple-glow);
+    color: white;
+    box-shadow: 0 10px 25px rgba(163, 112, 247, .35);
     flex-shrink: 0;
 }
 
-.dados {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-}
-
 .dados h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 2px;
 }
 
 .dados #arroba {
-    color: var(--purple-primary);
-    font-size: 0.95rem;
+    color: var(--roxo2);
+    font-size: 14px;
     font-weight: 500;
+    margin-bottom: 6px;
 }
 
 .dados #bio {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 2px;
+    color: var(--texto2);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 #editarPerfil {
-    align-self: flex-start;
-    margin-top: 10px;
-    background: rgba(139, 92, 246, 0.15);
-    color: var(--purple-primary);
-    border: 1px solid var(--purple-primary);
-    padding: 8px 18px;
-    border-radius: 20px;
+    margin-top: 12px;
+    background: var(--input);
+    color: var(--texto);
+    border: 1px solid rgba(255, 255, 255, .08);
+    padding: 9px 18px;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s ease;
+    transition: .35s;
 }
 
 #editarPerfil:hover {
-    background: var(--purple-primary);
-    color: #fff;
+    background: var(--roxo);
+    color: white;
+    box-shadow: 0 8px 20px rgba(163, 112, 247, .3);
 }
 
-/* ---- ESTATÍSTICAS ---- */
+/* ===========================
+ESTATÍSTICAS
+=========================== */
+
 .estatisticas {
     display: flex;
     justify-content: space-around;
     margin-top: 30px;
-    padding-top: 25px;
-    border-top: 1px solid var(--card-border);
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
     text-align: center;
 }
 
 .estatisticas h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .estatisticas span {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--texto2);
+    font-size: 13px;
 }
 
-/* ---- SEÇÃO DE FAVORITOS (TOPS) ---- */
+/* ===========================
+TOP FAVORITOS
+=========================== */
+
 .titulo-top h2, .titulo-publicacoes h2 {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
     margin-bottom: 4px;
 }
 
 .titulo-top p, .titulo-publicacoes p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-bottom: 20px;
+    color: var(--texto2);
+    font-size: 14px;
+    margin-bottom: 18px;
 }
 
 .tops-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
 }
 
 .top-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 15px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 20px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -233,38 +251,40 @@ main {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: .35s;
 }
 
 .top-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--purple-primary);
+    transform: translateY(-4px);
+    border-color: var(--roxo);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .top-card img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    background-color: #1a162b;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: var(--input);
 }
 
 .top-card .overlay {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    height: 220px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    height: 200px;
+    background: rgba(18, 12, 23, 0.75);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    font-weight: 500;
-    font-size: 0.9rem;
+    transition: .35s;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--roxo2);
 }
 
 .top-card:hover .overlay {
@@ -272,24 +292,26 @@ main {
 }
 
 .top-card small {
-    color: var(--purple-primary);
-    font-size: 0.75rem;
+    color: var(--roxo2);
+    font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
     margin-bottom: 2px;
 }
 
 .top-card span {
-    font-size: 0.9rem;
+    font-size: 14px;
     font-weight: 500;
-    color: var(--text-white);
+    color: var(--texto);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
 }
 
-/* ---- SEÇÃO DE PUBLICAÇÕES ---- */
+/* ===========================
+PUBLICAÇÕES
+=========================== */
+
 .titulo-publicacoes {
     display: flex;
     justify-content: space-between;
@@ -297,54 +319,59 @@ main {
 }
 
 .btn-publicacao {
-    background: var(--purple-primary);
-    color: #fff;
+    padding: 12px 22px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: 500;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #8c5cf6, #bb8eff);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
+    transition: .35s;
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 15px var(--purple-glow);
-    transition: background 0.3s ease;
 }
 
 .btn-publicacao:hover {
-    background: var(--purple-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(163, 112, 247, .35);
 }
 
-/* Estado Sem Publicação */
 .sem-post {
-    background: var(--card-bg);
-    border: 1px dashed var(--card-border);
-    border-radius: 20px;
-    padding: 50px 20px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px dashed rgba(255, 255, 255, .15);
+    border-radius: 24px;
+    padding: 45px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .sem-post i {
-    font-size: 2.5rem;
-    color: var(--purple-primary);
-    opacity: 0.8;
+    font-size: 36px;
+    color: var(--roxo);
+    margin-bottom: 4px;
 }
 
 .sem-post h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .sem-post p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--texto2);
+    font-size: 14px;
 }
 
-/* ---- ESTILIZAGEM GERAL DOS MODAIS ---- */
+/* ===========================
+MODAIS (ESTILO FIEL AO CARD DE LOGIN)
+=========================== */
+
 .modal-post {
     display: none;
     position: fixed;
@@ -352,103 +379,132 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 8, 18, 0.8);
-    backdrop-filter: blur(8px);
+    background: rgba(18, 12, 23, 0.75);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
 .modal-box {
-    background: #181427;
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
+    width: 430px;
+    max-width: 90%;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 28px;
     padding: 30px;
-    width: 90%;
-    max-width: 440px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    gap: 14px;
+    animation: fade .35s;
 }
 
 .fechar-modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 22px;
+    right: 22px;
     background: none;
     border: none;
-    color: var(--text-muted);
-    font-size: 1.2rem;
+    color: var(--texto2);
+    font-size: 20px;
     cursor: pointer;
+    transition: .3s;
 }
 
 .fechar-modal:hover {
-    color: var(--text-white);
+    color: white;
 }
 
 .modal-box h2 {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .modal-box p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--texto2);
+    font-size: 14px;
 }
 
-/* Inputs e Textareas nos Modais */
+/* Inputs e Textareas dos Modais */
 .modal-box input[type="text"],
 .modal-box textarea {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    background: var(--input);
+    border: 1px solid rgba(255, 255, 255, .08);
+    color: white;
     padding: 12px 15px;
-    color: var(--text-white);
-    font-size: 0.9rem;
+    border-radius: 14px;
     outline: none;
+    transition: .3s;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-box input[type="text"]::placeholder,
+.modal-box textarea::placeholder {
+    color: #9f93b7;
+}
+
+.modal-box textarea {
+    resize: none;
+    min-height: 90px;
 }
 
 .modal-box input[type="text"]:focus,
 .modal-box textarea:focus {
-    border-color: var(--purple-primary);
-}
-
-.tipo-post, .btn-publicar {
-    background: var(--purple-primary);
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.3s ease;
+    border-color: var(--roxo);
+    box-shadow: 0 0 20px rgba(163, 112, 247, .25);
 }
 
 .tipo-post {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--card-border);
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 14px;
+    background: var(--input);
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
     text-align: left;
+    cursor: pointer;
+    transition: .35s;
 }
 
 .tipo-post:hover {
-    background: rgba(139, 92, 246, 0.2);
-    border-color: var(--purple-primary);
+    border-color: var(--roxo);
+    background: #342745;
+}
+
+.btn-publicar {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #8c5cf6, #bb8eff);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: .35s;
+    margin-top: 6px;
 }
 
 .btn-publicar:hover {
-    background: var(--purple-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(163, 112, 247, .35);
 }
 
 /* Previews e Zoom da Imagem */
 .preview-imagem img {
     width: 100%;
-    max-height: 200px;
+    max-height: 180px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 14px;
     display: none;
 }
 
@@ -456,28 +512,46 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 13px;
+    color: var(--texto2);
 }
 
 .controle-zoom input {
     flex: 1;
 }
 
-/* ---- RESPONSIVIDADE ---- */
-@media (max-width: 600px) {
+/* ===========================
+ANIMAÇÕES DO LOGIN
+=========================== */
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+RESPONSIVO
+=========================== */
+
+@media(max-width:600px) {
     .perfil-topo {
         flex-direction: column;
         text-align: center;
     }
 
-    #editarPerfil {
-        align-self: center;
-    }
-
     .titulo-publicacoes {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
+        gap: 14px;
+    }
+
+    .modal-box {
+        padding: 24px;
     }
 }
