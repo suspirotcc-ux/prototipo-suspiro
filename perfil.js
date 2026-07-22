@@ -20,32 +20,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnFecharEditar = document.getElementById("fecharEditar");
     const btnSalvarPerfil = document.getElementById("salvar");
 
-    btnEditarPerfil.addEventListener("click", () => {
-        document.getElementById("novoNome").value = document.getElementById("nomeUsuario").innerText;
-        document.getElementById("novoUsuario").value = document.getElementById("arroba").innerText;
-        document.getElementById("novaBio").value = document.getElementById("bio").innerText;
-        modalEditar.style.display = "flex";
-    });
+    if (btnEditarPerfil) {
+        btnEditarPerfil.addEventListener("click", () => {
+            document.getElementById("novoNome").value = document.getElementById("nomeUsuario").innerText;
+            document.getElementById("novoUsuario").value = document.getElementById("arroba").innerText;
+            document.getElementById("novaBio").value = document.getElementById("bio").innerText;
+            modalEditar.style.display = "flex";
+        });
+    }
 
-    btnFecharEditar.addEventListener("click", () => {
-        modalEditar.style.display = "none";
-    });
+    if (btnFecharEditar) {
+        btnFecharEditar.addEventListener("click", () => {
+            modalEditar.style.display = "none";
+        });
+    }
 
-    btnSalvarPerfil.addEventListener("click", () => {
-        const nome = document.getElementById("novoNome").value;
-        const usuario = document.getElementById("novoUsuario").value;
-        const bio = document.getElementById("novaBio").value;
+    if (btnSalvarPerfil) {
+        btnSalvarPerfil.addEventListener("click", () => {
+            const nome = document.getElementById("novoNome").value;
+            const usuario = document.getElementById("novoUsuario").value;
+            const bio = document.getElementById("novaBio").value;
 
-        if (nome) document.getElementById("nomeUsuario").innerText = nome;
-        if (usuario) document.getElementById("arroba").innerText = usuario.startsWith("@") ? usuario : `@${usuario}`;
-        if (bio) document.getElementById("bio").innerText = bio;
-        if (nome) document.getElementById("inicial").innerText = nome.charAt(0).toUpperCase();
+            if (nome) document.getElementById("nomeUsuario").innerText = nome;
+            if (usuario) document.getElementById("arroba").innerText = usuario.startsWith("@") ? usuario : `@${usuario}`;
+            if (bio) document.getElementById("bio").innerText = bio;
+            if (nome) document.getElementById("inicial").innerText = nome.charAt(0).toUpperCase();
 
-        // Salvar no localStorage
-        localStorage.setItem("suspiro_perfil", JSON.stringify({ nome, usuario, bio }));
+            // Salvar no localStorage
+            localStorage.setItem("suspiro_perfil", JSON.stringify({ nome, usuario, bio }));
 
-        modalEditar.style.display = "none";
-    });
+            modalEditar.style.display = "none";
+        });
+    }
 
     function carregarPerfil() {
         const dados = JSON.parse(localStorage.getItem("suspiro_perfil"));
@@ -76,57 +82,67 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewImagem = document.getElementById("previewImagem");
     let imagemBase64 = "";
 
-    btnNovoPost.addEventListener("click", () => modalPost.style.display = "flex");
-    btnFecharModalPost.addEventListener("click", () => modalPost.style.display = "none");
+    if (btnNovoPost) btnNovoPost.addEventListener("click", () => modalPost.style.display = "flex");
+    if (btnFecharModalPost) btnFecharModalPost.addEventListener("click", () => modalPost.style.display = "none");
 
-    btnAbrirFoto.addEventListener("click", () => {
-        modalPost.style.display = "none";
-        modalFoto.style.display = "flex";
-    });
+    if (btnAbrirFoto) {
+        btnAbrirFoto.addEventListener("click", () => {
+            modalPost.style.display = "none";
+            modalFoto.style.display = "flex";
+        });
+    }
 
-    btnAbrirPensamento.addEventListener("click", () => {
-        modalPost.style.display = "none";
-        modalPensamento.style.display = "flex";
-    });
+    if (btnAbrirPensamento) {
+        btnAbrirPensamento.addEventListener("click", () => {
+            modalPost.style.display = "none";
+            modalPensamento.style.display = "flex";
+        });
+    }
 
-    btnFecharFoto.addEventListener("click", () => modalFoto.style.display = "none");
-    btnFecharPensamento.addEventListener("click", () => modalPensamento.style.display = "none");
+    if (btnFecharFoto) btnFecharFoto.addEventListener("click", () => modalFoto.style.display = "none");
+    if (btnFecharPensamento) btnFecharPensamento.addEventListener("click", () => modalPensamento.style.display = "none");
 
     // Converter imagem selecionada para Base64
-    inputImagemPost.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                imagemBase64 = event.target.result;
-                previewImagem.src = imagemBase64;
-                previewImagem.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+    if (inputImagemPost) {
+        inputImagemPost.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    imagemBase64 = event.target.result;
+                    previewImagem.src = imagemBase64;
+                    previewImagem.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
 
     // Publicar Pensamento
-    btnPublicarPensamento.addEventListener("click", () => {
-        const texto = document.getElementById("textoPensamento").value;
-        if (!texto.trim()) return alert("Escreva algo para publicar!");
+    if (btnPublicarPensamento) {
+        btnPublicarPensamento.addEventListener("click", () => {
+            const texto = document.getElementById("textoPensamento").value;
+            if (!texto.trim()) return alert("Escreva algo para publicar!");
 
-        salvarPost({ tipo: "pensamento", conteudo: texto, data: new Date().toLocaleDateString() });
-        document.getElementById("textoPensamento").value = "";
-        modalPensamento.style.display = "none";
-    });
+            salvarPost({ tipo: "pensamento", conteudo: texto, data: new Date().toLocaleDateString() });
+            document.getElementById("textoPensamento").value = "";
+            modalPensamento.style.display = "none";
+        });
+    }
 
     // Publicar Foto
-    btnPublicarFoto.addEventListener("click", () => {
-        const legenda = document.getElementById("legendaPost").value;
-        if (!imagemBase64) return alert("Selecione uma imagem!");
+    if (btnPublicarFoto) {
+        btnPublicarFoto.addEventListener("click", () => {
+            const legenda = document.getElementById("legendaPost").value;
+            if (!imagemBase64) return alert("Selecione uma imagem!");
 
-        salvarPost({ tipo: "foto", imagem: imagemBase64, conteudo: legenda, data: new Date().toLocaleDateString() });
-        document.getElementById("legendaPost").value = "";
-        previewImagem.src = "";
-        imagemBase64 = "";
-        modalFoto.style.display = "none";
-    });
+            salvarPost({ tipo: "foto", imagem: imagemBase64, conteudo: legenda, data: new Date().toLocaleDateString() });
+            document.getElementById("legendaPost").value = "";
+            previewImagem.src = "";
+            imagemBase64 = "";
+            modalFoto.style.display = "none";
+        });
+    }
 
     function salvarPost(post) {
         let posts = JSON.parse(localStorage.getItem("suspiro_posts")) || [];
@@ -141,25 +157,27 @@ document.addEventListener("DOMContentLoaded", () => {
         const semPost = document.getElementById("semPost");
         const contadorPosts = document.getElementById("posts");
 
-        contadorPosts.innerText = posts.length;
+        if (contadorPosts) contadorPosts.innerText = posts.length;
 
         if (posts.length === 0) {
-            semPost.style.display = "flex";
-            listaPosts.innerHTML = "";
+            if (semPost) semPost.style.display = "flex";
+            if (listaPosts) listaPosts.innerHTML = "";
             return;
         }
 
-        semPost.style.display = "none";
-        listaPosts.innerHTML = posts.map((post, index) => `
-            <div class="card-post" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px; position: relative;">
-                <button onclick="deletarPost(${index})" style="position: absolute; right: 15px; top: 15px; background: none; border: none; color: #ff5555; cursor: pointer;">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-                <small style="opacity: 0.6;">${post.data}</small>
-                ${post.imagem ? `<img src="${post.imagem}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin: 10px 0;">` : ''}
-                <p style="margin-top: 8px;">${post.conteudo}</p>
-            </div>
-        `).join('');
+        if (semPost) semPost.style.display = "none";
+        if (listaPosts) {
+            listaPosts.innerHTML = posts.map((post, index) => `
+                <div class="card-post" style="background: var(--card); border: 1px solid rgba(255,255,255,.08); padding: 20px; border-radius: 20px; margin-bottom: 15px; position: relative;">
+                    <button onclick="deletarPost(${index})" style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: #ff5555; cursor: pointer;">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <small style="color: var(--texto2); display: block; margin-bottom: 8px;">${post.data}</small>
+                    ${post.imagem ? `<img src="${post.imagem}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin: 10px 0;">` : ''}
+                    <p style="color: var(--texto); margin-top: 6px; font-size: 15px;">${post.conteudo}</p>
+                </div>
+            `).join('');
+        }
     }
 
     window.deletarPost = function(index) {
@@ -172,50 +190,52 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---- 3. FAVORITOS / TOPS ----
     let categoriaAtual = "";
     const btnFecharTop = document.getElementById("fecharTop");
-    btnFecharTop.addEventListener("click", () => modalTop.style.display = "none");
+    if (btnFecharTop) btnFecharTop.addEventListener("click", () => modalTop.style.display = "none");
 
     window.abrirModal = function(categoria) {
         categoriaAtual = categoria;
-        document.getElementById("tituloModal").innerText = `Escolher ${categoria.toUpperCase()}`;
-        document.getElementById("pesquisaTop").value = "";
+        const tituloModal = document.getElementById("tituloModal");
+        if (tituloModal) tituloModal.innerText = `Escolher ${categoria.toUpperCase()}`;
         
-        // Exemplo simples de input de imagem / nome para teste direto
         const lista = document.getElementById("listaResultados");
-        lista.innerHTML = `
-            <div style="display:flex; flex-direction:column; gap:10px; margin-top:15px;">
-                <input type="text" id="nomeItem" placeholder="Nome do(a) ${categoria}">
-                <input type="text" id="urlCapa" placeholder="URL da imagem da capa">
-                <button id="btnSalvarFav" class="btn-publicar">Salvar Favorito</button>
-            </div>
-        `;
+        if (lista) {
+            lista.innerHTML = `
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:10px;">
+                    <input type="text" id="nomeItem" placeholder="Nome do(a) ${categoria}">
+                    <input type="text" id="urlCapa" placeholder="Cole o link da imagem da capa">
+                    <button id="btnSalvarFav" class="btn-publicar">Salvar Favorito</button>
+                </div>
+            `;
 
-        document.getElementById("btnSalvarFav").addEventListener("click", () => {
-            const nome = document.getElementById("nomeItem").value;
-            const capa = document.getElementById("urlCapa").value;
+            document.getElementById("btnSalvarFav").addEventListener("click", () => {
+                const nome = document.getElementById("nomeItem").value;
+                const capa = document.getElementById("urlCapa").value;
 
-            if (nome) {
-                salvarFavorito(categoriaAtual, nome, capa);
-                modalTop.style.display = "none";
-            }
-        });
+                if (nome) {
+                    salvarFavorito(categoriaAtual, nome, capa);
+                    modalTop.style.display = "none";
+                }
+            });
+        }
 
-        modalTop.style.display = "flex";
+        if (modalTop) modalTop.style.display = "flex";
     };
 
     function salvarFavorito(cat, nome, capa) {
         let favs = JSON.parse(localStorage.getItem("suspiro_favoritos")) || {};
-        favs[cat] = { nome, capa: capa || 'https://via.placeholder.com/150' };
+        favs[cat] = { nome, capa: capa.trim() };
         localStorage.setItem("suspiro_favoritos", JSON.stringify(favs));
         carregarFavoritos();
     }
 
+    // FUNÇÃO COM PROTEÇÃO DE IMAGEM QUEBRADA:
     function carregarFavoritos() {
         const favs = JSON.parse(localStorage.getItem("suspiro_favoritos")) || {};
         const placeholders = {
-            filme: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300',
-            livro: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300',
-            jogo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300',
-            musica: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300'
+            filme: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400',
+            livro: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400',
+            jogo: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400',
+            musica: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400'
         };
 
         ['filme', 'livro', 'jogo', 'musica'].forEach(cat => {
@@ -223,7 +243,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const nomEl = document.getElementById(`nome${cat.charAt(0).toUpperCase() + cat.slice(1)}`);
 
             if (favs[cat]) {
-                if (capEl) capEl.src = favs[cat].capa || placeholders[cat];
+                if (capEl) {
+                    // Usa a capa informada ou o placeholder se estiver vazia
+                    capEl.src = favs[cat].capa || placeholders[cat];
+                    
+                    // Se o link da imagem falhar no navegador, carrega o placeholder automaticamente
+                    capEl.onerror = () => { capEl.src = placeholders[cat]; };
+                }
                 if (nomEl) nomEl.innerText = favs[cat].nome;
             } else {
                 if (capEl) capEl.src = placeholders[cat];
